@@ -72,7 +72,7 @@ img { display: block; max-width: 100%; }
 .hero-copy h1 { margin: 0; font-family: var(--mono); font-size: clamp(3.4rem, 5.8vw, 5.8rem); line-height: 1.02; letter-spacing: -0.06em; }
 .hero-copy h1 span { color: var(--wine-light); }
 .hero-description { max-width: 700px; margin: 46px 0 0; color: var(--muted); font-family: var(--mono); font-size: clamp(0.88rem, 1.2vw, 1.05rem); line-height: 1.8; }
-.hero-actions { display: flex; align-items: center; gap: 18px; margin-top: 38px; }
+.hero-actions { display: flex; align-items: center; gap: 16px; margin-top: 38px; flex-wrap: wrap; }
 .outline-button, .solid-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 40px; min-width: 210px; padding: 15px 22px; border: 1px solid var(--wine-light); border-radius: 999px; color: var(--wine-light); font-family: var(--mono); font-size: 0.75rem; font-weight: 750; text-transform: uppercase; letter-spacing: 0.08em; transition: transform 180ms ease, background 180ms ease, color 180ms ease; }
 .outline-button:hover { background: var(--wine); color: var(--cream); transform: translateY(-3px); }
 .social-link { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--wine-light); border-radius: 50%; color: var(--wine-light); font-family: var(--mono); font-size: 0.82rem; font-weight: 750; transition: background 180ms ease, color 180ms ease, transform 180ms ease; }
@@ -204,11 +204,10 @@ img { display: block; max-width: 100%; }
 .year-content h3 { max-width: 620px; margin: 0 0 15px; color: var(--cream); font-family: var(--mono); font-size: clamp(1.3rem, 2vw, 1.9rem); line-height: 1.16; letter-spacing: -0.045em; }
 .year-content > p { max-width: 650px; margin: 0 0 30px; color: #d3d0d4; font-family: var(--mono); font-size: 0.76rem; line-height: 1.72; }
 .year-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 174px; gap: 12px; max-width: 680px; min-height: 0; }
-.journey-tile { position: relative; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; overflow: hidden; border: 1px solid rgba(244,240,232,.12); border-radius: 10px; background: var(--panel); opacity: .48; transform: translateY(22px); transition: transform 620ms cubic-bezier(.2,.75,.25,1), opacity 620ms ease, border-color 300ms ease; }
+.journey-tile { position: relative; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; overflow: hidden; border: 1px solid rgba(244,240,232,.12); border-radius: 10px; background: var(--panel); opacity: 1; transform: none; transition: border-color 300ms ease; }
 .journey-tile:first-child { grid-row: auto; grid-column: 1 / -1; }
-.journey-tile:nth-child(2) { transition-delay: 90ms; transform: translateY(22px); }
-.journey-tile:nth-child(3) { transition-delay: 160ms; transform: translateY(22px); }
-.journey-year.is-active .journey-tile { opacity: 1; transform: translateY(0); }
+.journey-tile:nth-child(2), .journey-tile:nth-child(3) { transform: none; }
+.journey-year.is-active .journey-tile { opacity: 1; transform: none; }
 .journey-tile::before { position: absolute; content: ""; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom, #000, transparent 92%); }
 .journey-tile b { position: relative; z-index: 1; color: var(--wine-light); font-family: var(--mono); font-size: clamp(1.45rem, 3vw, 2.7rem); letter-spacing: -0.065em; }
 .journey-tile span { position: relative; z-index: 1; color: var(--muted); font-family: var(--mono); font-size: 0.56rem; text-transform: uppercase; letter-spacing: .04em; }
@@ -278,7 +277,7 @@ img { display: block; max-width: 100%; }
   position: relative;
   flex: 1;
   height: 100%;
-  background: #6b1030;
+  background: #aa2d56;
   transform: translateY(100%);
   will-change: transform;
 }
@@ -646,17 +645,13 @@ img { display: block; max-width: 100%; }
   grid-template-rows: auto 1fr auto;
   gap: 26px;
   padding: 38px;
-  transition: background 480ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 480ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
-              color 350ms ease;
-  will-change: background, box-shadow, transform;
+  transition: background 240ms ease, box-shadow 240ms ease, color 240ms ease;
 }
 
 .education-card:hover {
-  background: rgba(56, 19, 36, 0.72);
-  box-shadow: inset 0 0 0 1.5px rgba(211, 77, 120, 0.65), 0 20px 48px rgba(0, 0, 0, 0.4);
-  transform: translateY(-3px);
+  background: #54142d;
+  box-shadow: inset 0 0 0 2px var(--wine-light);
+  transform: none;
 }
 
 .education-body {
@@ -866,19 +861,18 @@ img { display: block; max-width: 100%; }
   min-width: 210px;
   border-radius: 14px;
   background: rgba(13, 12, 23, 0.92);
-  border: 1px solid rgba(211, 77, 120, 0.28);
+  border: 1px solid rgba(211, 77, 120, 0.35);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 16px rgba(211, 77, 120, 0.18);
   z-index: 1;
 }
 
 .architect-card:hover .architect-window {
-  border-color: rgba(211, 77, 120, 0.7);
-  box-shadow: 0 16px 42px rgba(211, 77, 120, 0.22);
-  transform: translateY(-2px);
+  border-color: rgba(211, 77, 120, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 16px rgba(211, 77, 120, 0.18);
+  transform: none;
 }
 
 .window-header {
@@ -1246,99 +1240,54 @@ img { display: block; max-width: 100%; }
 .honor-card {
   position: relative;
   min-height: 290px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  isolation: isolate;
+  padding: 1.5px;
+}
+
+.honor-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Moving round neon orb following perimeter */
+.honor-orb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    #ff4081 30%,
+    rgba(211, 77, 120, 0.8) 50%,
+    rgba(211, 77, 120, 0.2) 68%,
+    transparent 78%
+  );
+  filter: blur(2px) drop-shadow(0 0 16px rgba(255, 64, 129, 0.95)) drop-shadow(0 0 32px rgba(211, 77, 120, 0.7));
+  z-index: 1;
+  will-change: transform;
+}
+
+.honor-card-inner {
+  position: relative;
+  z-index: 2;
+  border-radius: 26.5px;
+  background: #0e0d1c;
+  padding: 34px;
+  min-height: 287px;
   display: grid;
   grid-template-columns: 150px 1fr;
   align-items: center;
   gap: 30px;
-  overflow: hidden;
-  padding: 36px;
-  border-radius: 28px;
-  background: #0e0d1c;
-  border: none;
-  isolation: isolate;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.honor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(211, 77, 120, 0.22);
-}
-
-/* ---- Bright LED neon beam orbiting each card ---- */
-.honor-card::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 350%;
-  height: 350%;
-  aspect-ratio: 1;
-  pointer-events: none;
-  z-index: 0;
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    transparent 0deg 240deg,
-    rgba(155, 38, 78, 0.12) 255deg,
-    rgba(211, 77, 120, 0.55) 295deg,
-    rgba(255, 110, 155, 0.9) 318deg,
-    #fff 328deg,
-    rgba(255, 110, 155, 0.9) 338deg,
-    rgba(211, 77, 120, 0.55) 350deg,
-    transparent 360deg
-  );
-  transform: translate(-50%, -50%) rotate(0deg);
-  filter:
-    drop-shadow(0 0 6px rgba(255, 80, 140, 1))
-    drop-shadow(0 0 18px rgba(211, 77, 120, 0.85))
-    drop-shadow(0 0 36px rgba(155, 38, 78, 0.5));
-  will-change: transform;
-}
-
-/* Inner matte surface — only the thin bright beam shows as border */
-.honor-card::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: 26px;
-  background: #0e0d1c;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* All children above the overlay */
-.honor-card > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Card 1 — fast clockwise */
-.honor-card:nth-child(1)::before {
-  animation: honor-spin-cw 7s linear infinite;
-}
-/* Card 2 — slower counter-clockwise, offset */
-.honor-card:nth-child(2)::before {
-  animation: honor-spin-ccw 11s linear infinite;
-  animation-delay: -2.8s;
-}
-/* Card 3 — medium clockwise, offset */
-.honor-card:nth-child(3)::before {
-  animation: honor-spin-cw 9s linear infinite;
-  animation-delay: -5.1s;
-}
-/* Card 4 — slow counter-clockwise, offset */
-.honor-card:nth-child(4)::before {
-  animation: honor-spin-ccw 14s linear infinite;
-  animation-delay: -6.6s;
-}
-
-@keyframes honor-spin-cw {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes honor-spin-ccw {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+  height: calc(100% - 3px);
+  width: calc(100% - 3px);
 }
 
 .honor-card h3 {
@@ -2586,59 +2535,6 @@ img { display: block; max-width: 100%; }
   82% { opacity: .27; transform: translate3d(16px, 8px, 22px) rotate(0); }
 }
 
-.architect-badge {
-  top: 28px;
-  right: 28px;
-  width: 142px;
-  height: auto;
-  min-height: 92px;
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: 4px 10px;
-  padding: 14px;
-  border: 1px solid rgba(211, 77, 120, .46);
-  border-radius: 16px;
-  clip-path: none;
-  background: rgba(21, 21, 34, .88);
-  text-align: left;
-  box-shadow: 0 12px 34px rgba(0, 0, 0, .3), inset 0 0 0 1px rgba(255, 255, 255, .03);
-  backdrop-filter: blur(12px);
-}
-
-.architect-badge .badge-mark {
-  grid-row: 1 / 3;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--wine-light);
-  border-radius: 50%;
-  background: rgba(211, 77, 120, .12);
-  color: var(--wine-light);
-  font: 800 .7rem/1 var(--mono);
-  letter-spacing: -.04em;
-}
-
-.architect-badge small,
-.architect-badge b {
-  margin: 0;
-  line-height: 1.15;
-}
-
-.architect-badge small {
-  color: var(--muted);
-  font-size: .34rem;
-  letter-spacing: .08em;
-}
-
-.architect-badge b {
-  color: var(--cream);
-  font-size: .48rem;
-  letter-spacing: .02em;
-}
-
 .journey-year {
   min-height: 660px;
   padding-top: 112px;
@@ -2649,18 +2545,15 @@ img { display: block; max-width: 100%; }
   max-width: 680px;
   margin: 0;
   opacity: 1;
-  transform: translate3d(0, 0, 0);
-  transition: opacity 760ms ease, transform 760ms cubic-bezier(.16, 1, .3, 1), border-color 300ms ease;
+  transform: none !important;
+  animation: none !important;
+  transition: border-color 300ms ease;
 }
 
 .journey-year.is-active .journey-image,
 .journey-year.is-active .journey-placeholder {
-  animation: journey-rise 760ms cubic-bezier(.16, 1, .3, 1) both;
-}
-
-@keyframes journey-rise {
-  from { opacity: .25; transform: translate3d(0, 28px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
+  animation: none !important;
+  transform: none !important;
 }
 
 .journey-image {

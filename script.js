@@ -143,3 +143,112 @@ window.addEventListener("pageshow", (event) => {
 });
 window.setTimeout(() => document.body.classList.add("page-ready"), 80);
 updateScrollEffects();
+
+// Aceternity UI style moving border orb
+const initHonorOrbs = () => {
+  const cards = document.querySelectorAll(".honor-card");
+  if (!cards.length) return;
+
+  const configs = [
+    { speed: 0.0001, dir: 1, offset: 0 },
+    { speed: 0.00007, dir: -1, offset: 0.35 },
+    { speed: 0.000085, dir: 1, offset: 0.65 },
+    { speed: 0.00006, dir: -1, offset: 0.15 }
+  ];
+
+  const orbs = [];
+  cards.forEach((card, i) => {
+    const orb = card.querySelector(".honor-orb");
+    if (!orb) return;
+    orbs.push({
+      card,
+      orb,
+      cfg: configs[i % configs.length],
+      progress: configs[i % configs.length].offset
+    });
+  });
+
+  if (!orbs.length) return;
+
+  let lastTime = performance.now();
+  const step = (time) => {
+    const dt = time - lastTime;
+    lastTime = time;
+
+    orbs.forEach((item) => {
+      const w = item.card.offsetWidth;
+      const h = item.card.offsetHeight;
+      if (!w || !h) return;
+
+      const r = 28;
+      const straightW = Math.max(0, w - 2 * r);
+      const straightH = Math.max(0, h - 2 * r);
+      const arcLen = 0.5 * Math.PI * r;
+      const perimeter = 2 * straightW + 2 * straightH + 4 * arcLen;
+
+      item.progress = (item.progress + item.cfg.dir * item.cfg.speed * dt) % 1;
+      if (item.progress < 0) item.progress += 1;
+
+      let dist = item.progress * perimeter;
+      let x = 0;
+      let y = 0;
+
+      if (dist < straightW) {
+        x = r + dist;
+        y = 0;
+      } else {
+        dist -= straightW;
+        if (dist < arcLen) {
+          const a = -Math.PI / 2 + (dist / arcLen) * (Math.PI / 2);
+          x = w - r + Math.cos(a) * r;
+          y = r + Math.sin(a) * r;
+        } else {
+          dist -= arcLen;
+          if (dist < straightH) {
+            x = w;
+            y = r + dist;
+          } else {
+            dist -= straightH;
+            if (dist < arcLen) {
+              const a = (dist / arcLen) * (Math.PI / 2);
+              x = w - r + Math.cos(a) * r;
+              y = h - r + Math.sin(a) * r;
+            } else {
+              dist -= arcLen;
+              if (dist < straightW) {
+                x = w - r - dist;
+                y = h;
+              } else {
+                dist -= straightW;
+                if (dist < arcLen) {
+                  const a = Math.PI / 2 + (dist / arcLen) * (Math.PI / 2);
+                  x = r + Math.cos(a) * r;
+                  y = h - r + Math.sin(a) * r;
+                } else {
+                  dist -= arcLen;
+                  if (dist < straightH) {
+                    x = 0;
+                    y = h - r - dist;
+                  } else {
+                    dist -= straightH;
+                    const a = Math.PI + (dist / arcLen) * (Math.PI / 2);
+                    x = r + Math.cos(a) * r;
+                    y = r + Math.sin(a) * r;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      item.orb.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+    });
+
+    requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame(step);
+};
+
+initHonorOrbs();
