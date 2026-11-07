@@ -4356,3 +4356,374 @@ h4 {
 /* ==========================================================================
    FLOATING NAV - CONTACT PAGE: add Contact link
    ========================================================================== */
+
+/* ==========================================================================
+   USER REFINEMENTS (2026-11-08)
+   ========================================================================== */
+
+/* 1. Hero CV button: compact, centered, bold monospace */
+.hero-actions .outline-button,
+.hero-cv-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  min-width: unset !important;
+  width: auto !important;
+  padding: 13px 26px !important;
+  border-radius: 9999px !important;
+  border: 1.5px solid var(--wine-light) !important;
+  color: var(--wine-light) !important;
+  background: transparent !important;
+  font-family: var(--mono) !important;
+  font-size: 0.95rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease !important;
+}
+
+.hero-cv-btn span {
+  display: inline-block;
+  line-height: 1;
+}
+
+.hero-cv-btn b {
+  display: inline-block;
+  font-size: 1.15rem;
+  line-height: 1;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.hero-cv-btn:hover {
+  background: var(--wine) !important;
+  color: var(--cream) !important;
+  transform: translateY(-2px) !important;
+}
+
+.hero-cv-btn:hover b {
+  transform: translateX(3px);
+}
+
+/* 2. Hero indent: slightly to the left (~10-15px) */
+.hero-inner {
+  padding-left: clamp(18px, 3.2vw, 44px) !important;
+  padding-right: clamp(16px, 2vw, 32px) !important;
+}
+
+/* 3. Smooth transition from Hero/Metrics into Education */
+.hero {
+  position: relative;
+  overflow: visible !important;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 240px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(17, 17, 29, 0.45) 40%,
+    rgba(17, 17, 29, 0.85) 75%,
+    #11111d 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.education-section {
+  position: relative;
+  background: #11111d !important;
+  z-index: 3;
+}
+
+/* 4. Software Architect Designer in 2 lines */
+.architect-card > strong {
+  display: block !important;
+  max-width: none !important;
+  width: 100% !important;
+  font-family: var(--mono) !important;
+  font-size: clamp(1.2rem, 1.55vw, 1.7rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.04em !important;
+  margin: 0 !important;
+}
+
+.arch-line1 {
+  display: block !important;
+  white-space: nowrap !important;
+  color: var(--cream) !important;
+  font-weight: 800 !important;
+}
+
+.arch-line2 {
+  display: block !important;
+  color: var(--wine-light) !important;
+  font-weight: 800 !important;
+  margin-top: 3px !important;
+}
+
+.architect-badge {
+  top: 16px !important;
+  right: 16px !important;
+  padding: 5px 12px !important;
+  gap: 8px !important;
+  border-radius: 999px !important;
+  background: rgba(18, 17, 30, 0.95) !important;
+  border: 1px solid rgba(211, 77, 120, 0.35) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.architect-badge .badge-mark {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 0.65rem !important;
+}
+
+.architect-badge .badge-info small {
+  font-size: 0.48rem !important;
+}
+
+.architect-badge .badge-info b {
+  font-size: 0.62rem !important;
+}
+
+/* 5. Contact Form: restored clean inputs & validation */
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 24px;
+  max-width: 980px;
+  margin-top: 36px;
+}
+
+.cf-label {
+  display: grid;
+  gap: 8px;
+  color: var(--cream);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.cf-label.message-field {
+  grid-column: 1 / -1;
+}
+
+.cf-input-wrap {
+  position: relative;
+  border-radius: 12px;
+}
+
+.cf-input-wrap input,
+.cf-input-wrap textarea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10.5px;
+  outline: none;
+  padding: 16px 18px;
+  background: #0d0c18;
+  color: var(--cream);
+  font: 500 0.82rem/1.5 var(--mono);
+  box-sizing: border-box;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.cf-input-wrap textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.cf-input-wrap input:focus,
+.cf-input-wrap textarea:focus {
+  border-color: rgba(211, 77, 120, 0.6);
+  box-shadow: 0 0 0 2px rgba(211, 77, 120, 0.22);
+}
+
+.cf-error {
+  display: none;
+  color: #ef4444;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.cf-error.is-visible {
+  display: block;
+}
+
+.cf-submit-wrap {
+  position: relative;
+  grid-column: 1 / -1;
+  padding: 1.5px;
+  border-radius: 12px;
+  background: radial-gradient(
+    180px circle at var(--gx, -999px) var(--gy, -999px),
+    rgba(255, 64, 129, calc(var(--glow-opacity, 0) * 0.95)),
+    rgba(211, 77, 120, calc(var(--glow-opacity, 0) * 0.45)) 45%,
+    rgba(255, 255, 255, 0.1) 85%
+  );
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.cf-submit-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 17px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10.5px;
+  background: #0d0c18;
+  color: var(--cream);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.cf-submit-btn:hover {
+  background: #141224;
+  color: #ffffff;
+}
+
+.cf-arrow {
+  color: var(--wine-light);
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.cf-submit-btn:hover .cf-arrow {
+  transform: translateX(4px);
+}
+
+.form-status {
+  grid-column: 1 / -1;
+  margin: 12px 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-align: center;
+  min-height: 22px;
+}
+
+/* Peer through personal life button: CENTERED */
+.contact-personal-cta {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 40px auto 20px !important;
+}
+
+.contact-cta-enlarged.personal-action {
+  margin: 0 auto !important;
+  display: inline-flex !important;
+}
+
+/* Social circles: bottom right */
+.contact-social-circles {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 100% !important;
+  margin-top: 16px !important;
+}
+
+/* 6. Components of my life: remove hover zoom & style 6th language card */
+.components-card:hover,
+.components-card:focus-visible {
+  transform: none !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+.components-card-img {
+  transform: none !important;
+  transition: filter 300ms ease !important;
+}
+
+.components-card:hover .components-card-img {
+  transform: none !important;
+  filter: saturate(1.05) brightness(1) !important;
+}
+
+.components-card-languages {
+  background: radial-gradient(circle at 30% 30%, #1f1b32, #100f1c) !important;
+  border: 1px solid rgba(211, 77, 120, 0.28) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 32px 28px !important;
+}
+
+.components-lang-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.components-lang-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--wine-light);
+  text-transform: uppercase;
+}
+
+.components-lang-title {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--cream);
+  letter-spacing: -0.03em;
+}
+
+.components-lang-desc {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+}
+
+.components-lang-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.components-lang-chips span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--cream);
+}

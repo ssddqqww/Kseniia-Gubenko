@@ -21,11 +21,14 @@ document.querySelectorAll("[data-glow-wrap]").forEach((wrap) => {
 // ─── Custom validation with clean, friendly messages ───────────────────────────
 function validateForm() {
   let valid = true;
+  let firstInvalid = null;
+
   form.querySelectorAll("[data-cf-input]").forEach((input) => {
     const errorEl = input.closest(".cf-label")?.querySelector("[data-cf-error]");
     const wrap = input.closest("[data-glow-wrap]");
     if (!input.value.trim()) {
       valid = false;
+      if (!firstInvalid) firstInvalid = input;
       if (errorEl) errorEl.classList.add("is-visible");
       if (wrap) wrap.classList.add("has-error");
     } else {
@@ -40,12 +43,18 @@ function validateForm() {
     const errorEl = emailInput.closest(".cf-label")?.querySelector("[data-cf-error]");
     const wrap = emailInput.closest("[data-glow-wrap]");
     if (errorEl) {
-      errorEl.textContent = "Please enter a valid email address (e.g. name@domain.com)";
+      errorEl.textContent = "Please provide your email address so I can reply!";
       errorEl.classList.add("is-visible");
     }
     if (wrap) wrap.classList.add("has-error");
+    if (!firstInvalid) firstInvalid = emailInput;
     valid = false;
   }
+
+  if (firstInvalid) {
+    firstInvalid.focus();
+  }
+
   return valid;
 }
 
@@ -63,11 +72,21 @@ form?.querySelectorAll("[data-cf-input]").forEach((input) => {
 // ─── Form submit handler ────────────────────────────────────────────────────────
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (!validateForm()) return;
+
+  if (!validateForm()) {
+    if (status) {
+      status.style.color = "#ef4444";
+      status.textContent = "Please fill in the required fields above.";
+    }
+    return;
+  }
 
   submitButton?.setAttribute("disabled", "");
   form.classList.remove("is-sent", "has-error");
-  if (status) status.textContent = "Sending…";
+  if (status) {
+    status.style.color = "var(--wine-light)";
+    status.textContent = "Sending…";
+  }
 
   try {
     const response = await fetch(form.action, {
@@ -78,10 +97,16 @@ form?.addEventListener("submit", async (event) => {
     if (!response.ok) throw new Error("Message could not be sent");
     form.reset();
     form.classList.add("is-sent");
-    if (status) status.textContent = "Message sent successfully! ✉️";
+    if (status) {
+      status.style.color = "#ff4081";
+      status.textContent = "Message sent successfully! ✉️";
+    }
   } catch {
     form.classList.add("has-error");
-    if (status) status.textContent = "Could not send automatically. Please email kssgubenko@gmail.com directly.";
+    if (status) {
+      status.style.color = "#ef4444";
+      status.textContent = "Could not send automatically. Please email kssgubenko@gmail.com directly.";
+    }
   } finally {
     submitButton?.removeAttribute("disabled");
   }
@@ -105,8 +130,6 @@ document.querySelectorAll("[data-copy]").forEach((btn) => {
       ta.remove();
     }
     btn.classList.add("is-copied");
-    const block = btn.closest(".contact-email-block");
-    if (block) block.classList.add("is-copied");
 
     // Toast feedback
     const toast = document.createElement("div");
@@ -117,7 +140,6 @@ document.querySelectorAll("[data-copy]").forEach((btn) => {
 
     setTimeout(() => {
       btn.classList.remove("is-copied");
-      if (block) block.classList.remove("is-copied");
       toast.classList.remove("is-visible");
       setTimeout(() => toast.remove(), 300);
     }, 2200);
