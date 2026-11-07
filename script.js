@@ -6,6 +6,7 @@ const transitionLinks = document.querySelectorAll("[data-transition-link]");
 const journeyYears = document.querySelectorAll("[data-journey-year]");
 const journeyTimeline = document.querySelector("[data-journey-timeline]");
 const journeyProgress = document.querySelector("[data-journey-progress]");
+const journeyMore = document.querySelector("[data-journey-more]");
 const nameTrigger = document.querySelector("[data-name-trigger]");
 const transitionStorageKey = "kseniia-page-transition";
 
@@ -26,7 +27,7 @@ if (transition) {
     });
     window.setTimeout(() => {
       transition.classList.remove("is-entering", "is-entered");
-    }, 1120);
+    }, 720);
   }
 }
 
@@ -51,10 +52,20 @@ menuToggle?.addEventListener("click", () => {
 
 mobileMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 
+const floatingNav = document.querySelector("[data-floating-nav]");
+
 transitionLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     const href = link.getAttribute("href");
     if (!href || href.startsWith("#")) return;
+
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const targetPath = href.split("/").pop();
+    if (currentPath === targetPath) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     event.preventDefault();
     if (transition?.classList.contains("is-leaving")) return;
     closeMenu();
@@ -66,7 +77,7 @@ transitionLinks.forEach((link) => {
     transition?.classList.add("is-leaving");
     window.setTimeout(() => {
       window.location.href = href;
-    }, 1120);
+    }, 650);
   });
 });
 
@@ -86,22 +97,40 @@ const journeyObserver = new IntersectionObserver(
 );
 
 journeyYears.forEach((year) => journeyObserver.observe(year));
+if (journeyMore) journeyObserver.observe(journeyMore);
 
 const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 20);
+const updateFloatingNav = () => {
+  if (!floatingNav) return;
+  const show = window.scrollY > 240;
+  floatingNav.classList.toggle("is-visible", show);
+};
 const updateJourneyProgress = () => {
   if (!journeyTimeline || !journeyProgress) return;
   const bounds = journeyTimeline.getBoundingClientRect();
   const viewportAnchor = window.innerHeight * 0.45;
   const progress = Math.min(1, Math.max(0, (viewportAnchor - bounds.top) / bounds.height));
   journeyProgress.style.transform = `scaleY(${progress})`;
-  journeyYears.forEach((year) => {
-    if (year.getBoundingClientRect().top < window.innerHeight * 0.82) year.classList.add("is-active");
+  let currentIndex = -1;
+  journeyYears.forEach((year, index) => {
+    const yearBounds = year.getBoundingClientRect();
+    const yearAnchor = yearBounds.top + Math.min(yearBounds.height * 0.2, 150);
+    const reached = yearAnchor <= viewportAnchor;
+    year.classList.toggle("is-active", reached);
+    year.classList.toggle("is-passed", reached);
+    if (reached) currentIndex = index;
   });
+  journeyYears.forEach((year, index) => year.classList.toggle("is-current", index === currentIndex));
+  if (journeyMore) {
+    const moreBounds = journeyMore.getBoundingClientRect();
+    journeyMore.classList.toggle("is-reached", moreBounds.top < viewportAnchor + moreBounds.height * 0.45 || progress >= 0.96);
+  }
 };
 
 const updateScrollEffects = () => {
   updateHeader();
   updateJourneyProgress();
+  updateFloatingNav();
 };
 
 window.addEventListener("scroll", updateScrollEffects, { passive: true });
