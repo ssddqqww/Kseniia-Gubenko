@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0d0c17" />
-    <meta property="og:title" content="Kseniia Gubenko — Portfolio" />
+    <meta property="og:title" content="Personal | Kseniia Gubenko — Portfolio" />
     <meta property="og:type" content="website" />
     <title>Personal | Kseniia Gubenko — Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
@@ -30,7 +30,7 @@
         <div class="shell">
           <header class="hobbies-heading">
             <p>Beyond the screen</p>
-            <h1 id="hobbies-title">Kseniia’s Hobbies</h1>
+            <h1 id="hobbies-title">My Hobbies</h1>
             <span>Four things that keep me curious, grounded, and always learning.</span>
           </header>
 
@@ -77,7 +77,46 @@
           </div>
         </div>
       </section>
-      <!-- For visiting my profile, thank you (Aceternity Beams with Collision) -->
+
+      <!-- Components of my life (Radnaabazar-style Cards Carousel) -->
+      <section class="components-life-section" aria-label="Components of my life">
+        <div class="shell">
+          <header class="components-life-header">
+            <h2 class="components-life-title">Components of my life</h2>
+          </header>
+        </div>
+
+        <div class="components-carousel-container">
+          <div class="components-carousel-track">
+            <div class="components-card" tabindex="0">
+              <div class="components-card-overlay" aria-hidden="true"></div>
+              <img src="assets/personal-books.jpg" alt="Life component 1" class="components-card-img" />
+            </div>
+
+            <div class="components-card" tabindex="0">
+              <div class="components-card-overlay" aria-hidden="true"></div>
+              <img src="assets/journey-2024.jpg" alt="Life component 2" class="components-card-img" />
+            </div>
+
+            <div class="components-card" tabindex="0">
+              <div class="components-card-overlay" aria-hidden="true"></div>
+              <img src="assets/personal-math.png" alt="Life component 3" class="components-card-img" />
+            </div>
+
+            <div class="components-card" tabindex="0">
+              <div class="components-card-overlay" aria-hidden="true"></div>
+              <img src="assets/personal-horse-riding.jpg" alt="Life component 4" class="components-card-img" />
+            </div>
+
+            <div class="components-card" tabindex="0">
+              <div class="components-card-overlay" aria-hidden="true"></div>
+              <img src="assets/journey-2025.jpg" alt="Life component 5" class="components-card-img" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- For visiting my profile, thank you (Aceternity Beams with subtle pink border) -->
       <section class="personal-thankyou" id="beams-container" aria-label="Thank you message">
         <canvas id="beams-canvas" class="beams-canvas" aria-hidden="true"></canvas>
 
@@ -86,10 +125,10 @@
             For visiting my profile<br />
             <span class="beams-gradient-text">Thank you.</span>
           </h2>
-          <p class="beams-hint">Tap anywhere to drop a beam ✨</p>
         </div>
       </section>
     </main>
+
     <nav class="floating-nav" data-floating-nav aria-label="Quick page navigation">
       <div class="floating-nav-pill">
         <a class="floating-nav-link" href="index.html" data-transition-link>

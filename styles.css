@@ -3839,3 +3839,520 @@ h4 {
 .contact-buttons-stack {
   gap: 60px !important;
 }
+
+/* ==========================================================================
+   PORTFOLIO REFINEMENTS (Radnaabazar-aligned)
+   ========================================================================== */
+
+/* 1. Hero indentation & VIEW CV button */
+.hero-copy {
+  padding-left: clamp(24px, 4.2vw, 56px);
+}
+
+.hero-actions .outline-button {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 14px 28px;
+  min-width: 175px;
+}
+
+/* 2. Software Architect Designer - 2 lines & clean badge */
+.architect-card > strong {
+  max-width: 340px !important;
+  font-size: clamp(1.4rem, 1.95vw, 2.15rem) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.architect-badge {
+  top: 18px !important;
+  right: 18px !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 210px !important;
+  padding: 6px 14px !important;
+  gap: 10px !important;
+  border-radius: 999px !important;
+  background: rgba(18, 17, 30, 0.94) !important;
+  border: 1px solid rgba(211, 77, 120, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.architect-badge .badge-mark {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 0.72rem !important;
+  border-radius: 50% !important;
+}
+
+/* 3. Smooth transition between "The story continues" and "Let's Talk" */
+.journey-section {
+  position: relative;
+  background: #11111d;
+  padding-bottom: 70px;
+}
+
+.journey-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 170px;
+  background: linear-gradient(to bottom, transparent, #0d0c17);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-section {
+  position: relative;
+  background: #0d0c17 !important;
+  padding-top: 60px;
+}
+
+.contact-grid {
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 80%, transparent 100%),
+              radial-gradient(circle at 50% 50%, #000 45%, transparent 90%) !important;
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+/* 4. Contact page neon stage background from user image */
+.contact-page-bg {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background-color: #0b0a14 !important;
+  background-image: url('assets/contact-bg.jpg') !important;
+  background-position: center top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+.contact-bg-grid {
+  display: none !important;
+}
+
+/* 5. Email copy button: no scale, only SVG squares turn pink */
+.contact-copy-btn {
+  transform: none !important;
+  transition: color 180ms ease, border-color 180ms ease !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: none !important;
+}
+
+.contact-copy-btn:hover {
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  color: #ff4081 !important;
+  box-shadow: none !important;
+}
+
+.contact-copy-btn.is-copied {
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  color: #ff4081 !important;
+  box-shadow: none !important;
+}
+
+.contact-email-block.is-copied {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+}
+
+/* 6. Contact page bottom actions: Peer through personal life (larger) + Social below right */
+.contact-bottom-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.contact-personal-cta {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.contact-cta-enlarged {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  letter-spacing: 0.02em;
+}
+
+.contact-social-circles {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-top: 0 !important;
+  width: 100%;
+}
+
+/* 7. Floating nav hover highlight behavior */
+.floating-nav-link:hover {
+  color: #ffffff;
+}
+
+.floating-nav-link:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.18), 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  z-index: 0;
+}
+
+/* 8. Hobbies - remove pink glow on hover */
+.hobby-card::before {
+  display: none !important;
+}
+
+.hobby-card:hover {
+  transform: none !important;
+}
+
+.hobby-card:hover .hobby-media,
+.hobby-card-books:hover .hobby-media,
+.hobby-card-math:hover .hobby-media,
+.hobby-card-riding:hover .hobby-media {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 9. Radnaabazar-style "Components of my life" Carousel */
+.components-life-section {
+  position: relative;
+  padding: 90px 0 60px;
+  overflow: hidden;
+}
+
+.components-life-header {
+  margin-bottom: 28px;
+}
+
+.components-life-title {
+  font-family: var(--mono) !important;
+  font-size: clamp(2.2rem, 3.8vw, 3.8rem) !important;
+  font-weight: 800 !important;
+  color: var(--cream);
+  letter-spacing: -0.04em;
+}
+
+.components-carousel-container {
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 20px 0 32px;
+}
+
+.components-carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.components-carousel-track {
+  display: flex;
+  gap: 24px;
+  padding: 0 max(24px, calc((100vw - 1380px) / 2 + 36px));
+  width: max-content;
+}
+
+.components-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 320px;
+  height: 480px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), border-color 380ms ease, box-shadow 380ms ease;
+}
+
+.components-card:hover,
+.components-card:focus-visible {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.6);
+  outline: none;
+}
+
+.components-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+
+.components-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 600ms ease;
+  filter: saturate(0.92) brightness(0.95);
+}
+
+.components-card:hover .components-card-img {
+  transform: scale(1.05);
+  filter: saturate(1.05) brightness(1);
+}
+
+@media (max-width: 768px) {
+  .components-card {
+    width: 250px;
+    height: 380px;
+    border-radius: 22px;
+  }
+}
+
+/* 10. Beams Thank You box: subtle pink border, taller */
+.personal-thankyou {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px !important;
+  margin: 90px auto 70px !important;
+  max-width: 1240px;
+  border-radius: 32px !important;
+  padding: 110px 32px !important;
+  overflow: hidden;
+  text-align: center;
+  background: #090812;
+  border: 1px solid rgba(255, 64, 129, 0.28) !important;
+  box-shadow: 0 0 35px rgba(255, 64, 129, 0.1), inset 0 0 20px rgba(255, 64, 129, 0.04) !important;
+}
+
+/* ==========================================================================
+   CONTACT PAGE — BACKGROUND SPOTLIGHT BEAMS
+   ========================================================================== */
+
+.contact-page {
+  min-height: 100vh;
+  background: #0b0a14 !important;
+  position: relative;
+}
+
+.contact-page-bg {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  overflow: hidden;
+  background: #0b0a14;
+}
+
+.contact-spotlight-beam {
+  position: absolute;
+  width: 55vw;
+  height: 100vh;
+  opacity: 0.75;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.beam-left {
+  top: -10%;
+  left: -18%;
+  background: radial-gradient(ellipse 55% 80% at 25% 10%, rgba(170, 40, 110, 0.65) 0%, rgba(90, 20, 80, 0.3) 40%, transparent 75%);
+  transform: rotate(-12deg);
+  transform-origin: top left;
+}
+
+.beam-right {
+  top: -10%;
+  right: -18%;
+  background: radial-gradient(ellipse 55% 80% at 75% 10%, rgba(90, 20, 140, 0.55) 0%, rgba(50, 15, 90, 0.25) 40%, transparent 75%);
+  transform: rotate(12deg);
+  transform-origin: top right;
+}
+
+.contact-ambient-fog {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 22% 25%, rgba(190, 50, 120, 0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 78% 35%, rgba(100, 30, 150, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 60% at 50% 80%, rgba(50, 10, 60, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Contact page main content above bg */
+.contact-page-main {
+  position: relative;
+  z-index: 1 !important;
+  background: transparent !important;
+}
+
+/* ==========================================================================
+   CONTACT PAGE — FLOATING NAV WITH ACTIVE PILL
+   ========================================================================== */
+
+/* On contact.html, neither Professional nor Personal should have active highlight
+   but the pill structure must match - we show the full-style pill same as other pages */
+.contact-page .floating-nav-pill .floating-nav-link .floating-nav-highlight {
+  display: none;
+}
+
+/* ==========================================================================
+   HERO SECTION — CONTENT LEFT INDENT (match radnaabazar.com)
+   ========================================================================== */
+.hero-inner {
+  padding-left: clamp(32px, 5vw, 72px);
+  padding-right: clamp(16px, 2vw, 32px);
+}
+
+.hero-copy {
+  padding-left: 0 !important;
+}
+
+/* ==========================================================================
+   SOFTWARE ARCHITECT DESIGNER — 2 LINES
+   ========================================================================== */
+.architect-card > strong {
+  font-size: clamp(1.5rem, 2.1vw, 2.3rem) !important;
+  line-height: 1.18 !important;
+  max-width: 300px !important;
+  letter-spacing: -0.045em !important;
+}
+
+.architect-card > strong span {
+  color: var(--wine-light);
+}
+
+/* ==========================================================================
+   CONTACT PAGE — BOTTOM ACTIONS LAYOUT FIX
+   ========================================================================== */
+.contact-bottom-actions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 48px;
+  width: 100%;
+}
+
+.contact-personal-cta {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.contact-cta-enlarged.personal-action {
+  font-size: 1rem !important;
+  padding: 18px 42px !important;
+  min-width: 300px !important;
+  border-width: 1.5px !important;
+  letter-spacing: 0.03em;
+  margin-top: 0 !important;
+}
+
+.contact-social-circles {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 100% !important;
+  margin-top: 4px !important;
+}
+
+/* ==========================================================================
+   SMOOTH SECTION TRANSITION: Journey -> Let's Talk
+   ========================================================================== */
+.journey-section {
+  position: relative;
+  background: #11111d !important;
+}
+
+.journey-section::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 240px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(14, 13, 24, 0.5) 35%,
+    rgba(13, 12, 23, 0.85) 65%,
+    #0d0c17 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.contact-section {
+  background: #0d0c17 !important;
+  padding-top: 0 !important;
+}
+
+.contact-grid {
+  opacity: 0.6 !important;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 25%, rgba(0,0,0,0.9) 55%, #000 85%, transparent 100%) !important;
+}
+
+/* ==========================================================================
+   HOBBY CARDS — FULLY REMOVE PINK HOVER GLOW
+   ========================================================================== */
+.hobby-card::before {
+  display: none !important;
+  content: none !important;
+}
+
+.hobby-card:hover .hobby-media,
+.hobby-card-math:hover .hobby-media,
+.hobby-card-riding:hover .hobby-media,
+.hobby-card-books:hover .hobby-media,
+.hobby-card-polyglot:hover .hobby-media,
+.hobby-card-books:hover .hobby-media {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ==========================================================================
+   BEAMS THANK YOU SECTION — LARGER + PINK BORDER
+   ========================================================================== */
+.personal-thankyou {
+  min-height: 520px !important;
+  margin: 80px auto 80px !important;
+  padding: 100px 32px !important;
+  border: 1px solid rgba(255, 64, 129, 0.25) !important;
+  box-shadow: 0 0 0 1px rgba(255, 64, 129, 0.08), 0 0 40px rgba(255, 64, 129, 0.08) !important;
+  background: rgba(9, 8, 18, 0.95) !important;
+  border-radius: 32px !important;
+}
+
+.beams-hint {
+  display: none !important;
+}
+
+/* ==========================================================================
+   FLOATING NAV - CONTACT PAGE: add Contact link
+   ========================================================================== */
