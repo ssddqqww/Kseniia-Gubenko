@@ -1244,68 +1244,68 @@ body.is-page-entering main {
 
 .honor-ai i {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--wine-light);
-  box-shadow: 0 0 15px var(--wine-light);
+  box-shadow: 0 0 10px var(--wine-light);
 }
-.honor-ai i:nth-of-type(1) { left: 6px; top: 22px; }
-.honor-ai i:nth-of-type(2) { right: 5px; top: 38px; }
-.honor-ai i:nth-of-type(3) { left: 24px; bottom: 5px; }
+.honor-ai i:nth-of-type(1) { left: 2px; top: 12px; }
+.honor-ai i:nth-of-type(2) { right: 2px; top: 22px; }
+.honor-ai i:nth-of-type(3) { left: 14px; bottom: 2px; }
 
 .honor-medal span {
-  inset: 25px;
+  inset: 14px;
   border-radius: 50%;
   transform: none;
 }
 
 .honor-medal i {
   position: absolute;
-  left: 43px;
+  left: 24px;
   top: 0;
-  width: 42px;
-  height: 48px;
+  width: 24px;
+  height: 28px;
   background: linear-gradient(90deg, #7d2147 50%, #d34d78 50%);
   clip-path: polygon(0 0, 100% 0, 75% 100%, 50% 78%, 25% 100%);
 }
 
 .honor-logic i {
   position: absolute;
-  width: 34px;
-  height: 34px;
-  border: 3px solid var(--wine-light);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--wine-light);
   border-radius: 50%;
 }
-.honor-logic i:nth-child(1) { left: 8px; top: 48px; }
-.honor-logic i:nth-child(2) { right: 8px; top: 18px; }
-.honor-logic i:nth-child(3) { right: 10px; bottom: 8px; }
+.honor-logic i:nth-child(1) { left: 4px; top: 28px; }
+.honor-logic i:nth-child(2) { right: 4px; top: 10px; }
+.honor-logic i:nth-child(3) { right: 6px; bottom: 4px; }
 .honor-logic::before,
 .honor-logic::after {
   position: absolute;
   content: "";
-  left: 38px;
-  width: 55px;
-  border-top: 3px solid var(--wine-light);
+  left: 22px;
+  width: 32px;
+  border-top: 2px solid var(--wine-light);
   transform-origin: left;
 }
-.honor-logic::before { top: 58px; transform: rotate(-28deg); }
-.honor-logic::after { top: 72px; transform: rotate(27deg); }
-.honor-logic span { position: absolute; inset: 42px 40px; color: var(--cream); font-size: 2.5rem; }
+.honor-logic::before { top: 34px; transform: rotate(-28deg); }
+.honor-logic::after { top: 42px; transform: rotate(27deg); }
+.honor-logic span { position: absolute; inset: 24px 22px; color: var(--cream); font-size: 1.5rem; }
 
 .honor-math i {
   position: absolute;
-  right: 8px;
-  bottom: 8px;
+  right: 4px;
+  bottom: 4px;
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--cream);
   color: var(--wine);
   font-family: Georgia, serif;
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-style: italic;
 }
 
@@ -3147,7 +3147,7 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 34px;
+  gap: 48px;
   width: 100%;
 }
 
