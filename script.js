@@ -21,14 +21,12 @@ if (transition) {
   }
 
   if (shouldAnimateEntry) {
-    document.body.classList.add("is-page-entering");
     transition.classList.add("is-entering");
     requestAnimationFrame(() => {
       requestAnimationFrame(() => transition.classList.add("is-entered"));
     });
     window.setTimeout(() => {
       transition.classList.remove("is-entering", "is-entered");
-      document.body.classList.remove("is-page-entering");
     }, 950);
   }
 }

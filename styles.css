@@ -242,7 +242,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   content: "";
   inset: 0;
-  background: radial-gradient(circle at 50% 45%, rgba(211, 77, 120, 0.16), transparent 60%);
+  background: radial-gradient(circle at 50% 45%, rgba(211, 77, 120, 0.075), transparent 55%);
 }
 .contact-inner {
   position: relative;
@@ -307,22 +307,6 @@ img { display: block; max-width: 100%; }
 .page-transition.is-entering.is-entered > span {
   transform: translateY(100%);
   transition: transform 420ms cubic-bezier(0.4, 0, 0.2, 1) var(--step-delay);
-}
-
-body.is-page-entering main {
-  animation: page-fade-rise 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 140ms;
-}
-
-@keyframes page-fade-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 .personal-page { min-height: 100vh; background: var(--night); }
 .personal-empty { min-height: 100vh; }
@@ -871,10 +855,11 @@ body.is-page-entering main {
   position: relative;
   z-index: 2;
   display: block;
+  max-width: 220px;
   font-family: var(--mono);
-  font-size: clamp(1.7rem, 2.7vw, 3rem);
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.15;
   letter-spacing: -0.05em;
 }
 
@@ -3349,4 +3334,508 @@ h4 {
     padding: 0 14px;
     font-size: 0.88rem;
   }
+}
+
+
+/* ============================================================
+   CONTACT PAGE — FULL REDESIGN (neon bg + cursor glow + copy)
+   ============================================================ */
+
+/* Neon animated background */
+.contact-page-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.contact-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(211, 77, 120, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(211, 77, 120, 0.22) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at 50% 60%, #000 30%, transparent 80%);
+  opacity: 0.65;
+  animation: grid-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes grid-pulse {
+  0%   { opacity: 0.45; }
+  100% { opacity: 0.75; }
+}
+
+.contact-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: glow-drift 10s ease-in-out infinite alternate;
+}
+
+.contact-bg-glow-1 {
+  width: 500px;
+  height: 500px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(211, 77, 120, 0.22) 0%, transparent 70%);
+  animation-duration: 10s;
+}
+
+.contact-bg-glow-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -80px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(100, 50, 180, 0.18) 0%, transparent 70%);
+  animation-duration: 14s;
+  animation-direction: alternate-reverse;
+}
+
+.contact-bg-orb {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: 30%;
+  right: 15%;
+  background: radial-gradient(circle, rgba(211, 77, 120, 0.12) 0%, transparent 65%);
+  filter: blur(60px);
+  border-radius: 50%;
+  animation: glow-drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes glow-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, -20px) scale(1.08); }
+}
+
+/* Make sure contact-page-main stays on top */
+.contact-page-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Cursor-glow form inputs (Aceternity UI Spotlight) ───── */
+.cf-label {
+  display: grid;
+  gap: 8px;
+  color: var(--cream);
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 700;
+}
+
+.cf-label.message-field,
+.cf-submit-wrap,
+.form-status {
+  grid-column: 1 / -1;
+}
+
+[data-glow-wrap] {
+  position: relative;
+  padding: 1.5px;
+  border-radius: 12px;
+  background: radial-gradient(
+    140px circle at var(--gx, -999px) var(--gy, -999px),
+    rgba(255, 64, 129, calc(var(--glow-opacity, 0) * 0.95)),
+    rgba(211, 77, 120, calc(var(--glow-opacity, 0) * 0.45)) 40%,
+    rgba(255, 255, 255, 0.08) 80%
+  );
+  transition: background 150ms ease;
+}
+
+[data-glow-wrap].has-error {
+  background: rgba(239, 68, 68, 0.65) !important;
+}
+
+.cf-input-wrap input,
+.cf-input-wrap textarea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10.5px;
+  outline: none;
+  padding: 16px 18px;
+  background: #0d0c18;
+  color: var(--cream);
+  font: 500 0.82rem/1.5 var(--mono);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.cf-input-wrap textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.cf-input-wrap input:focus,
+.cf-input-wrap textarea:focus {
+  border-color: rgba(211, 77, 120, 0.6);
+  box-shadow: 0 0 0 2px rgba(211, 77, 120, 0.22);
+}
+
+.cf-error {
+  display: none;
+  color: #ef4444;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.cf-error.is-visible {
+  display: block;
+}
+
+/* ─── Send email button with Aceternity glow & neon line ──── */
+.cf-submit-wrap {
+  position: relative;
+  grid-column: 1 / -1;
+  padding: 1.5px;
+  border-radius: 12px;
+  background: radial-gradient(
+    180px circle at var(--gx, -999px) var(--gy, -999px),
+    rgba(255, 64, 129, calc(var(--glow-opacity, 0) * 0.95)),
+    rgba(211, 77, 120, calc(var(--glow-opacity, 0) * 0.45)) 45%,
+    rgba(255, 255, 255, 0.1) 85%
+  );
+  overflow: hidden;
+}
+
+.cf-submit-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding: 17px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10.5px;
+  background: #111020;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  transition: background 250ms ease, border-color 250ms ease;
+  overflow: hidden;
+}
+
+.cf-submit-btn:hover {
+  background: #16152a;
+}
+
+.cf-submit-btn::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #ff4081, #d34d78, transparent);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  filter: drop-shadow(0 0 8px #ff4081);
+}
+
+.cf-submit-btn:hover::after {
+  opacity: 1;
+}
+
+.cf-arrow {
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cf-submit-btn:hover .cf-arrow {
+  transform: translateX(6px);
+}
+
+/* ─── Email copy card with Aceternity glow ─────────────────── */
+.contact-email-block {
+  position: relative;
+  margin-top: 32px;
+  padding: 1.5px;
+  border-radius: 14px;
+  background: radial-gradient(
+    180px circle at var(--gx, -999px) var(--gy, -999px),
+    rgba(255, 64, 129, calc(var(--glow-opacity, 0) * 0.9)),
+    rgba(211, 77, 120, calc(var(--glow-opacity, 0) * 0.4)) 40%,
+    rgba(255, 255, 255, 0.08) 80%
+  );
+  overflow: hidden;
+  transition: background 150ms ease;
+}
+
+.contact-email-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12.5px;
+  background: #0d0c18;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.contact-email-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-email-icon {
+  color: var(--wine-light);
+  flex-shrink: 0;
+}
+
+.contact-email-copy-text {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--cream);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contact-email-label {
+  color: var(--muted);
+}
+
+.contact-email-address {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.contact-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 220ms ease;
+}
+
+.contact-copy-btn:hover {
+  border-color: rgba(211, 77, 120, 0.6);
+  color: #ff4081;
+  background: rgba(211, 77, 120, 0.12);
+  transform: scale(1.05);
+}
+
+.contact-copy-btn.is-copied {
+  border-color: #ff4081;
+  color: #ff4081;
+  background: rgba(211, 77, 120, 0.22);
+  box-shadow: 0 0 14px rgba(255, 64, 129, 0.5);
+}
+
+.copy-icon-default { display: block; }
+.copy-icon-done { display: none; }
+.contact-copy-btn.is-copied .copy-icon-default { display: none; }
+.contact-copy-btn.is-copied .copy-icon-done { display: block; }
+
+/* Toast popup */
+.contact-toast {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #191728;
+  color: #ffffff;
+  border: 1px solid rgba(211, 77, 120, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(211, 77, 120, 0.25);
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 250ms ease, transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── Social circles row ────────────────────────────────────── */
+.contact-social-circles {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+/* ─── Personal life CTA at bottom ──────────────────────────── */
+.contact-personal-cta {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── Override old contact-form styles for new layout ───────── */
+.contact-page .contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.contact-page .contact-form label { display: none; } /* hide old-style labels */
+.contact-page .contact-form .cf-label { display: grid; } /* show new ones */
+
+@media (max-width: 700px) {
+  .contact-page .contact-form {
+    grid-template-columns: 1fr;
+  }
+  .cf-label.message-field,
+  .cf-submit-wrap {
+    grid-column: 1;
+  }
+}
+
+/* ─── Old .contact-direct hidden on contact page ─────────────  */
+.contact-page .contact-direct { display: none; }
+
+/* ─── Hobby card books — softer hover glow on image ─────────── */
+.hobby-card-books:hover .hobby-media {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 0 10px rgba(211, 77, 120, 0.05) !important;
+}
+
+/* ─── Index page contact section: smaller Let's Talk glow ────── */
+.contact-section .contact-grid::before {
+  background: radial-gradient(circle at 50% 45%, rgba(211, 77, 120, 0.09), transparent 55%) !important;
+}
+
+/* ─── Architect badge: prevent overlap — make it a small pill ── */
+.architect-badge {
+  top: 18px !important;
+  right: 18px !important;
+  padding: 8px 12px !important;
+  gap: 10px !important;
+  border-radius: 14px !important;
+}
+
+.architect-badge .badge-mark {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 0.72rem !important;
+}
+
+.architect-badge .badge-info small {
+  font-size: 0.5rem !important;
+}
+
+.architect-badge .badge-info b {
+  font-size: 0.65rem !important;
+}
+
+/* ─── Personal page: Aceternity Background Beams with Collision ─── */
+.personal-thankyou {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  margin: 60px auto 40px;
+  max-width: 1200px;
+  border-radius: 28px;
+  padding: 80px 24px;
+  overflow: hidden;
+  text-align: center;
+  background: #090812;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.personal-thankyou::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(211, 77, 120, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(211, 77, 120, 0.12) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.beams-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.beams-content {
+  position: relative;
+  z-index: 2;
+  user-select: none;
+  pointer-events: none;
+}
+
+.beams-title {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: clamp(2rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.beams-gradient-text {
+  display: inline-block;
+  background: linear-gradient(135deg, #f48fb1 0%, #ff4081 50%, #d34d78 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(255, 64, 129, 0.45));
+  transition: transform 0.25s ease;
+}
+
+.beams-gradient-text.is-pulsing {
+  transform: scale(1.04);
+}
+
+.beams-hint {
+  margin: 18px 0 0;
+  color: rgba(244, 240, 232, 0.45);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Contact section index: bigger gap + dimmer glow ────────── */
+.contact-buttons-stack {
+  gap: 60px !important;
 }

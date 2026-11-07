@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" type="module"></script>
     <script src="globe.js" type="module"></script>
+    <script src="beams.js" type="module"></script>
   </head>
   <body class="personal-page">
     <div class="page-transition" aria-hidden="true" data-page-transition>
@@ -74,6 +75,18 @@
               </div>
             </article>
           </div>
+        </div>
+      </section>
+      <!-- For visiting my profile, thank you (Aceternity Beams with Collision) -->
+      <section class="personal-thankyou" id="beams-container" aria-label="Thank you message">
+        <canvas id="beams-canvas" class="beams-canvas" aria-hidden="true"></canvas>
+
+        <div class="beams-content">
+          <h2 class="beams-title">
+            For visiting my profile<br />
+            <span class="beams-gradient-text">Thank you.</span>
+          </h2>
+          <p class="beams-hint">Tap anywhere to drop a beam ✨</p>
         </div>
       </section>
     </main>
