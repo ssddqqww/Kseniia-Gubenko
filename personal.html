@@ -9,6 +9,7 @@
     <title>Personal | Kseniia Gubenko — Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" type="module"></script>
+    <script src="globe.js" type="module"></script>
   </head>
   <body class="personal-page">
     <div class="page-transition" aria-hidden="true" data-page-transition>
@@ -35,7 +36,6 @@
           <div class="hobbies-grid">
             <article class="hobby-card hobby-card-math">
               <div class="hobby-copy">
-                <span class="hobby-number">01</span>
                 <h2>Math</h2>
                 <p>In my free time, I can spend hours solving mathematics problems, using each challenge to deepen my understanding beyond the standard curriculum.</p>
               </div>
@@ -46,7 +46,6 @@
 
             <article class="hobby-card hobby-card-riding">
               <div class="hobby-copy">
-                <span class="hobby-number">02</span>
                 <h2>Horse Riding</h2>
                 <p>I have been horse riding for more than two years. It continually takes me beyond my comfort zone while teaching me patience, trust, and how to build a genuine connection with an animal.</p>
               </div>
@@ -57,7 +56,6 @@
 
             <article class="hobby-card hobby-card-books">
               <div class="hobby-copy">
-                <span class="hobby-number">03</span>
                 <h2>Books</h2>
                 <p>During the summer, I often immerse myself in books about psychology and human behavior. One of the first—and still one of my favorites—is Robert Greene’s <em>The Laws of Human Nature</em>.</p>
               </div>
@@ -68,23 +66,11 @@
 
             <article class="hobby-card hobby-card-polyglot">
               <div class="hobby-copy">
-                <span class="hobby-number">04</span>
                 <h2>Dream of Learning 10+ Languages</h2>
                 <p>I dream of speaking more than ten languages—using each one as a new way to understand people, cultures, and ideas.</p>
               </div>
-              <div class="language-globe" aria-hidden="true">
-                <div class="globe-orbit globe-orbit-one"></div>
-                <div class="globe-orbit globe-orbit-two"></div>
-                <div class="globe-sphere">
-                  <div class="globe-map"></div>
-                  <span class="globe-line globe-line-one"></span>
-                  <span class="globe-line globe-line-two"></span>
-                  <span class="globe-meridian globe-meridian-one"></span>
-                  <span class="globe-meridian globe-meridian-two"></span>
-                  <i class="globe-pulse globe-pulse-one"></i>
-                  <i class="globe-pulse globe-pulse-two"></i>
-                  <i class="globe-pulse globe-pulse-three"></i>
-                </div>
+              <div class="cobe-globe-wrap" aria-hidden="true">
+                <canvas id="globe-canvas"></canvas>
               </div>
             </article>
           </div>

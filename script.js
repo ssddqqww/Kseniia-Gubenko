@@ -21,12 +21,14 @@ if (transition) {
   }
 
   if (shouldAnimateEntry) {
+    document.body.classList.add("is-page-entering");
     transition.classList.add("is-entering");
     requestAnimationFrame(() => {
       requestAnimationFrame(() => transition.classList.add("is-entered"));
     });
     window.setTimeout(() => {
       transition.classList.remove("is-entering", "is-entered");
+      document.body.classList.remove("is-page-entering");
     }, 950);
   }
 }
@@ -180,7 +182,7 @@ const initHonorOrbs = () => {
       const h = item.card.offsetHeight;
       if (!w || !h) return;
 
-      const r = 28;
+      const r = 22;
       const straightW = Math.max(0, w - 2 * r);
       const straightH = Math.max(0, h - 2 * r);
       const arcLen = 0.5 * Math.PI * r;
