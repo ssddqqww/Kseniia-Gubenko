@@ -27,7 +27,7 @@ if (transition) {
     });
     window.setTimeout(() => {
       transition.classList.remove("is-entering", "is-entered");
-    }, 720);
+    }, 950);
   }
 }
 
@@ -77,7 +77,7 @@ transitionLinks.forEach((link) => {
     transition?.classList.add("is-leaving");
     window.setTimeout(() => {
       window.location.href = href;
-    }, 650);
+    }, 850);
   });
 });
 
