@@ -252,3 +252,40 @@ const initHonorOrbs = () => {
 };
 
 initHonorOrbs();
+
+// ─── Components of my life carousel arrow navigation ────────────────────────
+const initCarouselControls = () => {
+  const container = document.querySelector(".components-carousel-container");
+  const prevBtn = document.querySelector(".carousel-arrow.carousel-prev");
+  const nextBtn = document.querySelector(".carousel-arrow.carousel-next");
+  if (!container || !prevBtn || !nextBtn) return;
+
+  const updateButtons = () => {
+    const left = container.scrollLeft;
+    const maxScroll = container.scrollWidth - container.clientWidth - 6;
+    prevBtn.disabled = left <= 10;
+    nextBtn.disabled = left >= maxScroll;
+  };
+
+  prevBtn.addEventListener("click", () => {
+    container.scrollBy({ left: -340, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    container.scrollBy({ left: 340, behavior: "smooth" });
+  });
+
+  container.addEventListener("scroll", updateButtons, { passive: true });
+  window.addEventListener("resize", updateButtons, { passive: true });
+  // Initial check once images might have loaded
+  updateButtons();
+  setTimeout(updateButtons, 300);
+  setTimeout(updateButtons, 1000);
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCarouselControls);
+} else {
+  initCarouselControls();
+}
+

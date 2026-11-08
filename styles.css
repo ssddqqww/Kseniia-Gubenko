@@ -4036,6 +4036,24 @@ h4 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
+/* Horse Riding card spacing polish - lift video up and eliminate excessive gap */
+.hobby-card-books {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.hobby-card-books .hobby-copy {
+  min-height: 0 !important;
+  margin-bottom: 22px !important;
+  padding-bottom: 0 !important;
+}
+
+.hobby-card-books .hobby-media {
+  height: 380px !important;
+  margin-top: 0 !important;
+}
+
 /* 9. Radnaabazar-style "Components of my life" Carousel */
 .components-life-section {
   position: relative;
@@ -4044,7 +4062,48 @@ h4 {
 }
 
 .components-life-header {
-  margin-bottom: 28px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  margin-bottom: 28px !important;
+}
+
+.carousel-nav-arrows {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.carousel-arrow {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #18181b !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: #f4f4f5 !important;
+  transform: scale(1.06) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.carousel-arrow:disabled {
+  background: #52525b !important;
+  color: #27272a !important;
+  opacity: 0.45 !important;
+  cursor: default !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .components-life-title {
@@ -4385,21 +4444,21 @@ h4 {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
-  width: 56px !important;
-  height: 56px !important;
+  width: 74px !important;
+  height: 74px !important;
   border-radius: 50% !important;
   pointer-events: none !important;
   background: radial-gradient(
     circle,
-    rgba(255, 64, 129, 0.65) 0%,
-    rgba(211, 77, 120, 0.35) 45%,
+    rgba(255, 64, 129, 0.72) 0%,
+    rgba(211, 77, 120, 0.38) 45%,
     rgba(255, 64, 129, 0.08) 70%,
     transparent 85%
   ) !important;
-  filter: blur(10px) !important;
+  filter: blur(12px) !important;
   z-index: 2 !important;
   will-change: transform !important;
-  opacity: 0.78 !important;
+  opacity: 0.82 !important;
 }
 
 .beams-gradient-text {
