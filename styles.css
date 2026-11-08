@@ -5196,28 +5196,39 @@ h4 {
   .site-header { padding: 0 14px; min-height: 60px; }
   .brand { font-size: 1.25rem !important; }
   
-  /* Hamburger: 3 lines, 44px touch target */
+  /* Hamburger: 3 lines, 44px touch target, no circle, positioned right, 2nd line shorter */
   .menu-toggle { 
     width: 44px !important; 
     height: 44px !important; 
     display: grid !important; 
     place-content: center; 
     gap: 5px !important; 
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
   }
   .menu-toggle span { 
     width: 24px !important; 
     height: 2px !important; 
     background: var(--wine-light) !important; 
-    transition: transform 180ms ease, opacity 180ms ease !important; 
+    transition: transform 180ms ease, opacity 180ms ease, width 180ms ease !important; 
+    border-radius: 1px !important;
+  }
+  .menu-toggle span:nth-child(2) { 
+    width: 16px !important; 
+    justify-self: end !important;
   }
   .menu-toggle[aria-expanded="true"] span:first-child { 
     transform: translateY(7px) rotate(45deg) !important; 
+    width: 24px !important;
   }
   .menu-toggle[aria-expanded="true"] span:nth-child(2) { 
     opacity: 0 !important; 
   }
   .menu-toggle[aria-expanded="true"] span:last-child { 
     transform: translateY(-7px) rotate(-45deg) !important; 
+    width: 24px !important;
   }
   
   /* Mobile menu: slides from right, ~60% from center (40% width from left) */
@@ -5231,19 +5242,21 @@ h4 {
     padding: 90px 22px 36px !important; 
     display: flex !important; 
     flex-direction: column !important; 
-    align-items: center !important; 
+    align-items: flex-end !important; 
     transform: translateX(100%) !important; 
     transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1) !important; 
     border-left: 1px solid var(--line) !important; 
   }
   .mobile-menu.is-open { transform: translateX(0) !important; }
   .mobile-menu::before {
-    content: "Ксенія ." !important;
+    content: "Kseniia ." !important;
     font-family: var(--mono) !important;
     font-size: 1.375rem !important;
     font-weight: 700 !important;
     color: var(--wine-light) !important;
     margin-bottom: 14px !important;
+    width: 100% !important;
+    text-align: right !important;
   }
   .mobile-menu::after {
     content: "English" !important;
@@ -5253,6 +5266,8 @@ h4 {
     margin-bottom: 28px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.1em !important;
+    width: 100% !important;
+    text-align: right !important;
   }
   .mobile-menu a { 
     font-size: 1.625rem !important; 
@@ -5261,7 +5276,7 @@ h4 {
     padding: 18px 0 !important; 
     border-bottom: 1px solid var(--line) !important; 
     width: 100% !important; 
-    text-align: center !important; 
+    text-align: right !important; 
     color: var(--cream) !important; 
   }
   .mobile-menu a:last-child { border-bottom: none !important; }
@@ -5304,99 +5319,102 @@ h4 {
     text-align: left !important; 
   }
   
-  /* Name: Ксенія on left, animated, ~2.25rem */
+  /* Name: Ксенія on left, BIGGER */
   .hero-name { 
-    font-size: 2.125rem !important; 
+    font-size: 2.5rem !important; 
     line-height: 1.1 !important; 
     letter-spacing: -0.02em !important; 
-    margin-bottom: 4px !important;
+    margin-bottom: 24px !important;
     color: var(--cream) !important;
     font-weight: 700 !important;
+    text-align: left !important;
   }
   
-  /* Full Stack Developer: centered above photo */
+  /* Photo: centered, circular, ~300px */
+  .hero-photo { 
+    width: 280px !important; 
+    height: 280px !important; 
+    max-width: 75vw !important; 
+    margin: 0 auto 16px !important; 
+    justify-self: center !important; 
+    border-radius: 50% !important;
+    overflow: hidden !important;
+  }
+  .hero-photo img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  .photo-orbit { display: none !important; }
+  
+  /* Full Stack Developer: under photo, centered */
   .hero-role { 
     font-family: var(--mono) !important; 
-    font-size: 0.75rem !important; 
+    font-size: 0.85rem !important; 
     font-weight: 600 !important; 
     color: var(--wine-light) !important; 
     text-align: center !important; 
     letter-spacing: 0.08em !important; 
     text-transform: uppercase !important; 
-    margin-bottom: 18px !important; 
-    margin-top: -6px !important;
+    margin-bottom: 20px !important; 
   }
   
-  /* Photo: centered, ~300px */
-  .hero-photo { 
-    width: 270px !important; 
-    height: 270px !important; 
-    max-width: 75vw !important; 
-    margin: 0 auto 18px !important; 
-    justify-self: center !important; 
-  }
-  .hero-photo img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
-  .photo-orbit { display: none !important; }
-  
-  /* Hello I'm Ксенія Губенко - animated name */
+  /* Hello I'm Ксенія Губенко - BIG TEXT */
   .hero-greeting { 
-    font-size: 1.0625rem !important; 
-    line-height: 1.45 !important; 
+    font-size: 1.5rem !important; 
+    line-height: 1.3 !important; 
     color: var(--cream) !important; 
-    margin-bottom: 14px !important; 
+    margin-bottom: 16px !important; 
     text-align: center !important;
+    font-weight: 600 !important;
   }
   .hero-greeting .name-trigger { display: inline !important; }
-  .hero-greeting .name-trigger-label { font-size: inherit !important; line-height: inherit !important; color: var(--wine-light) !important; }
+  .hero-greeting .name-trigger-label { font-size: inherit !important; line-height: inherit !important; color: var(--wine-light) !important; font-weight: 700 !important; }
   
-  /* 17 years old computer science student */
+  /* Description */
   .hero-description { 
-    font-size: 0.75rem !important; 
-    line-height: 1.55 !important; 
+    font-size: 0.85rem !important; 
+    line-height: 1.6 !important; 
     color: var(--muted) !important; 
-    margin-bottom: 24px !important; 
+    margin-bottom: 28px !important; 
     text-align: center !important; 
   }
   
-  /* View CV button + Social icons row */
+  /* View CV button centered */
   .hero-actions { 
     flex-direction: column !important; 
     align-items: center !important; 
-    gap: 18px !important; 
+    gap: 20px !important; 
     width: 100% !important; 
   }
   .hero-actions .outline-button { 
-    width: 100% !important; 
-    max-width: 260px !important; 
-    min-width: unset !important; 
+    width: auto !important; 
+    max-width: 280px !important; 
+    min-width: 200px !important; 
     justify-content: center !important; 
-    height: 46px !important; 
-    padding: 0 26px !important; 
-    font-size: 0.75rem !important; 
+    height: 48px !important; 
+    padding: 0 32px !important; 
+    font-size: 0.8rem !important; 
     font-weight: 700 !important; 
   }
   
-  /* Social icons in a row under View CV */
+  /* Social icons in ONE ROW under View CV */
   .hero-socials { 
     display: flex !important; 
     justify-content: center !important; 
-    gap: 14px !important; 
+    gap: 16px !important; 
     width: 100% !important; 
   }
   .hero-socials .social-item-wrap { display: inline-flex !important; margin: 0 !important; }
   .hero-socials .social-circle-btn { 
-    width: 38px !important; 
-    height: 38px !important; 
+    width: 42px !important; 
+    height: 42px !important; 
     border-width: 1.5px !important; 
   }
-  .hero-socials .social-circle-btn svg { width: 17px !important; height: 17px !important; }
+  .hero-socials .social-circle-btn svg { width: 18px !important; height: 18px !important; }
   .hero-socials .social-tooltip { display: none !important; }
   
-  /* Stats as TWO ROWS of text (not cards) */
+  /* Stats as INLINE TEXT (not blocks) - 2 rows, each stat on one line */
   .hero-stats { 
     display: flex !important; 
     flex-direction: column !important; 
-    gap: 14px !important; 
+    gap: 12px !important; 
     margin-top: 24px !important; 
     padding-top: 20px !important; 
     border-top: 1px solid var(--line) !important; 
@@ -5405,22 +5423,27 @@ h4 {
   .stat-row { 
     display: flex !important; 
     justify-content: space-between !important; 
-    gap: 14px !important; 
+    gap: 16px !important; 
+    flex-wrap: wrap !important;
   }
   .stat-row span { 
     flex: 1 !important; 
-    font-size: 0.75rem !important; 
-    line-height: 1.35 !important; 
+    min-width: 140px !important;
+    font-size: 0.85rem !important; 
+    line-height: 1.4 !important; 
     color: var(--muted) !important; 
     text-align: center !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
   }
   .stat-row strong { 
-    display: block !important; 
-    font-size: 1.375rem !important; 
+    font-size: 1.25rem !important; 
     line-height: 1.1 !important; 
     font-weight: 800 !important; 
     color: var(--cream) !important; 
-    margin-bottom: 2px !important; 
+    margin: 0 !important; 
   }
 }
 
@@ -5501,14 +5524,14 @@ h4 {
 
 /* ===== SHORT PROFILE ===== */
 @media (max-width: 767px) {
-  .profile-section { padding: 56px 0 !important; }
-  .profile-title { font-size: 1.875rem !important; margin-bottom: 24px !important; }
+  .profile-section { padding: 48px 0 !important; }
+  .profile-title { font-size: 1.75rem !important; margin-bottom: 20px !important; }
   
   .profile-grid { 
     display: grid !important; 
     grid-template-columns: 1fr !important; 
-    gap: 12px !important; 
-    max-width: 320px !important; 
+    gap: 16px !important; 
+    max-width: 340px !important; 
     margin: 0 auto !important; 
   }
   
@@ -5518,17 +5541,17 @@ h4 {
     grid-row: auto !important; 
     min-height: auto !important; 
     height: auto !important; 
-    border-radius: 14px !important; 
+    border-radius: 16px !important; 
   }
   
   /* Profile main: developer building... - restore image and overlay */
   .profile-main { 
-    min-height: 250px !important; 
+    min-height: 220px !important; 
     position: relative !important;
     overflow: hidden !important;
   }
   .profile-main img { object-position: center 30% !important; }
-  .profile-overlay { left: 14px !important; right: 14px !important; bottom: 14px !important; }
+  .profile-overlay { left: 16px !important; right: 16px !important; bottom: 16px !important; }
   .profile-overlay strong { 
     font-size: 1.125rem !important; 
     line-height: 1.2 !important; 
@@ -5537,25 +5560,25 @@ h4 {
   }
   .profile-overlay span { font-size: 0.5rem !important; }
   
-  /* Language card */
+  /* Language card - LEFT ALIGN TEXT */
   .language-card { 
     padding: 16px !important; 
-    min-height: 180px !important; 
+    min-height: 160px !important; 
     display: flex !important; 
     flex-direction: column !important; 
     justify-content: center !important; 
   }
   .language-card p { 
-    font-size: 1rem !important; 
-    line-height: 1.35 !important; 
-    text-align: center !important; 
+    font-size: 0.9375rem !important; 
+    line-height: 1.4 !important; 
+    text-align: left !important; 
   }
   .language-echo { font-size: 0.8rem !important; inset: 8px !important; }
   
   /* Stack card - RESTORE stack-rail with animation */
   .stack-card { 
     padding: 16px !important; 
-    min-height: 230px !important; 
+    min-height: 200px !important; 
     text-align: center !important; 
     display: flex !important;
     flex-direction: column !important;
@@ -5568,7 +5591,7 @@ h4 {
   .stack-rail { 
     display: block !important; 
     position: relative !important; 
-    height: 120px !important; 
+    height: 100px !important; 
     overflow: hidden !important; 
     margin-top: auto !important;
     width: 100% !important;
@@ -5611,11 +5634,11 @@ h4 {
     border-top: 1px dashed var(--wine-light) !important;
   }
   
-  /* Architect card - RESTORE bg-grid, window, badge */
+  /* Architect card - RESTORE bg-grid, window, REMOVE badge */
   .architect-card { 
     position: relative !important;
     padding: 16px !important; 
-    min-height: 250px !important;
+    min-height: 220px !important;
     overflow: hidden !important;
     background: rgba(17, 17, 29, 0.9) !important;
     border: 1px solid rgba(211, 77, 120, 0.32) !important;
@@ -5696,29 +5719,16 @@ h4 {
     pointer-events: none !important; 
   }
   
-  /* Architect badge */
+  /* REMOVE Architect badge */
   .architect-badge { 
-    position: absolute !important;
-    top: 10px !important; 
-    right: 10px !important; 
-    padding: 5px 8px !important; 
-    gap: 6px !important; 
-    background: rgba(13, 12, 23, 0.9) !important;
-    border: 1px solid var(--line) !important;
-    border-radius: 7px !important;
-    display: flex !important;
-    align-items: center !important;
-    z-index: 3 !important;
+    display: none !important;
   }
-  .architect-badge .badge-mark { width: 24px !important; height: 24px !important; font-size: 0.55rem !important; background: var(--wine) !important; color: var(--cream) !important; border-radius: 5px !important; display: grid !important; place-content: center !important; font-weight: 700 !important; }
-  .architect-badge .badge-info small { font-size: 0.4rem !important; color: var(--muted) !important; display: block !important; text-transform: uppercase !important; letter-spacing: 0.05em !important; }
-  .architect-badge .badge-info b { font-size: 0.5rem !important; color: var(--wine-light) !important; }
   
-  /* Inside card */
+  /* Inside card - LEFT ALIGN TEXT */
   .inside-card { 
     padding: 16px !important; 
-    min-height: 180px !important; 
-    text-align: center !important; 
+    min-height: 160px !important; 
+    text-align: left !important; 
   }
   .inside-card > div { width: 100% !important; }
   .inside-card span { font-size: 0.55rem !important; }
@@ -5743,14 +5753,14 @@ h4 {
 @media (max-width: 767px) {
   .projects-section { padding: 56px 0 !important; }
   .projects-heading h2 { font-size: 1.75rem !important; margin-bottom: 28px !important; }
-  .projects-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .projects-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
   .project-tile { min-height: auto !important; padding-top: 0 !important; }
-  .project-preview { min-height: 170px !important; }
-  .project-tile-copy { min-height: 130px !important; padding: 14px !important; }
-  .project-tile-copy h3 { font-size: 1rem !important; }
-  .project-tile-copy > p { font-size: 0.7rem !important; line-height: 1.5 !important; }
-  .project-preview .phone-mockup { transform: scale(0.45) !important; }
-  .tech-icons span { width: 28px !important; height: 28px !important; font-size: 0.45rem !important; }
+  .project-preview { min-height: 140px !important; }
+  .project-tile-copy { min-height: 100px !important; padding: 12px !important; }
+  .project-tile-copy h3 { font-size: 0.9375rem !important; }
+  .project-tile-copy > p { font-size: 0.65rem !important; line-height: 1.5 !important; }
+  .project-preview .phone-mockup { transform: scale(0.4) !important; }
+  .tech-icons span { width: 26px !important; height: 26px !important; font-size: 0.4rem !important; }
 }
 
 /* ===== EXPERIENCE & AWARDS ===== */
@@ -5804,7 +5814,7 @@ h4 {
   .journey-placeholder b { font-size: 1.25rem !important; margin-top: 24px !important; }
   .journey-more { 
     width: 100% !important; 
-    margin: 36px 0 0 !important; 
+    margin: 18px 0 0 !important; 
     padding: 18px !important; 
     border-radius: 10px !important; 
     border: 1px solid rgba(211, 77, 120, 0.24) !important; 
@@ -5829,7 +5839,7 @@ h4 {
 
 /* ===== CONTACT SECTION (index) - increase gap between two buttons ===== */
 @media (max-width: 767px) {
-  .contact-buttons-stack { flex-direction: column !important; gap: 24px !important; width: 100% !important; align-items: center !important; }
+  .contact-buttons-stack { flex-direction: column !important; gap: 32px !important; width: 100% !important; align-items: center !important; }
 }
 
 /* ===== CONTACT SECTION (index) ===== */
@@ -5892,7 +5902,7 @@ h4 {
     margin-bottom: 14px !important;
   }
   
-  .contact-personal-cta { margin: 44px auto 0 !important; width: 100% !important; max-width: 280px !important; justify-content: center !important; }
+  .contact-personal-cta { margin: 44px auto 0 !important; width: 100% !important; max-width: 320px !important; justify-content: center !important; }
   .contact-cta-enlarged { width: 100% !important; height: 46px !important; min-width: unset !important; font-size: 0.75rem !important; justify-content: center !important; }
   
   /* Reduce space between send email and copy email */
@@ -5905,7 +5915,7 @@ h4 {
 @media (max-width: 767px) {
   .hobbies-section { padding: 56px 0 28px !important; }
   .hobbies-heading h1 { font-size: 1.875rem !important; }
-  .hobbies-heading > span { font-size: 0.7rem !important; margin-top: 6px !important; display: block !important; }
+  .hobbies-heading > span { font-size: 0.7rem !important; margin-top: 16px !important; display: block !important; }
   .hobbies-grid { grid-template-columns: 1fr !important; gap: 1px !important; border-radius: 10px !important; overflow: hidden !important; }
   .hobby-card { padding: 18px 14px 14px !important; border: none !important; border-bottom: 1px solid var(--line) !important; border-radius: 0 !important; }
   .hobby-card:last-child { border-bottom: none !important; }
@@ -5935,9 +5945,9 @@ h4 {
   .components-lang-desc { font-size: 0.55rem !important; }
   .components-lang-chips span { font-size: 0.4rem !important; padding: 2px 6px !important; }
   
-  /* For visiting my profile thank you: wider button */
-  .personal-thankyou { padding: 40px 18px !important; min-height: 300px !important; border-radius: 12px !important; }
-  .beams-title { font-size: 1.5rem !important; }
+  /* For visiting my profile thank you: bigger */
+  .personal-thankyou { padding: 48px 20px !important; min-height: 360px !important; border-radius: 14px !important; }
+  .beams-title { font-size: 1.75rem !important; }
 }
 
 /* ===== TABLET (768-1024px) - minimal adjustments ===== */
