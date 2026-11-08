@@ -2667,17 +2667,23 @@ h4 {
 
 .hobby-copy h2 {
   margin: 0;
-  font-size: clamp(1.55rem, 2.4vw, 2.55rem);
-  font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -.045em;
+  font-family: var(--mono) !important;
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
 }
 
 .hobby-copy p {
   max-width: 620px;
-  margin: 20px 0 0;
-  color: var(--muted);
-  font: 500 .82rem/1.72 var(--mono);
+  margin: 12px 0 0 !important;
+  color: #d4d4d8 !important;
+  font-family: var(--mono) !important;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: -0.01em !important;
 }
 
 .hobby-copy em {
@@ -2754,12 +2760,14 @@ h4 {
 .cobe-globe-wrap {
   position: absolute;
   z-index: 0;
-  right: -90px;
-  bottom: -150px;
-  width: 580px;
-  height: 580px;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  bottom: -220px !important;
+  width: 580px !important;
+  height: 580px !important;
   pointer-events: none;
-  filter: drop-shadow(0 0 50px rgba(211, 77, 120, 0.4));
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.22));
 }
 
 #globe-canvas {
@@ -5003,14 +5011,15 @@ h4 {
 
 /* =========================================================
    COMPONENTS CAROUSEL — scroll-reveal (Radnaabazar style)
-   opacity:0 translateY(22px) → opacity:1 translateY(0)
+   smooth upward glide as user scrolls to the section
    ========================================================= */
 
 .components-card {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1), transform 550ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateY(40px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1) !important;
   transition-delay: calc(var(--card-delay, 0) * 1ms) !important;
+  will-change: opacity, transform;
 }
 
 .components-card.is-revealed {
@@ -5035,4 +5044,124 @@ h4 {
   transform: none !important;
   filter: none !important;
   transition: none !important;
+}
+
+/* =========================================================
+   FLOATING MUSIC PLAYER PILL (Radnaabazar style)
+   ========================================================= */
+
+.music-player-pill {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px 6px 6px;
+  background: rgba(22, 22, 34, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.music-player-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+}
+
+.music-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 95px;
+}
+
+.music-title {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.music-artist {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: #9ca3af;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.music-toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1e1b4b;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, background 0.15s ease;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.08);
+  background: #f4f4f5;
+}
+
+.music-toggle-btn svg {
+  display: block;
+  fill: #1e1b4b;
+}
+
+.music-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  border-radius: 999px;
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 700px) {
+  .music-player-pill {
+    bottom: 84px;
+    left: 16px;
+    padding: 5px 12px 5px 5px;
+  }
+  .music-cover {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+  .music-toggle-btn {
+    width: 30px;
+    height: 30px;
+  }
 }

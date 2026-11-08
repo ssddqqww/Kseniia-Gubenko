@@ -264,7 +264,7 @@ const initCardScrollReveal = () => {
     if (revealed) return;
     revealed = true;
     cards.forEach((card, idx) => {
-      card.style.setProperty("--card-delay", String(idx * 150));
+      card.style.setProperty("--card-delay", String(idx * 140));
       card.classList.add("is-revealed");
     });
   };
@@ -277,17 +277,60 @@ const initCardScrollReveal = () => {
           observer.disconnect();
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     observer.observe(section);
   } else {
     revealCards();
   }
-
-  // Safety fallback: ensure cards are always revealed even if fast scrolled
-  setTimeout(revealCards, 1200);
 };
 
 initCardScrollReveal();
+
+// ─── Floating Music Player (Radnaabazar style) ──────────────────────────────
+const initMusicPlayer = () => {
+  const player = document.getElementById("music-player");
+  const audio = document.getElementById("global-audio");
+  const btn = document.getElementById("music-toggle-btn");
+  if (!player || !audio || !btn) return;
+
+  const playIcon = btn.querySelector(".music-icon-play");
+  const pauseIcon = btn.querySelector(".music-icon-pause");
+  const progressBar = document.getElementById("music-progress-bar");
+
+  const updateUI = (isPlaying) => {
+    if (playIcon && pauseIcon) {
+      playIcon.style.display = isPlaying ? "none" : "block";
+      pauseIcon.style.display = isPlaying ? "block" : "none";
+    }
+  };
+
+  const toggle = (e) => {
+    if (e) e.stopPropagation();
+    if (audio.paused) {
+      audio.play().then(() => updateUI(true)).catch(() => {});
+    } else {
+      audio.pause();
+      updateUI(false);
+    }
+  };
+
+  btn.addEventListener("click", toggle);
+  player.addEventListener("click", toggle);
+
+  audio.addEventListener("timeupdate", () => {
+    if (progressBar && audio.duration) {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = `${pct}%`;
+    }
+  });
+
+  audio.addEventListener("ended", () => {
+    updateUI(false);
+    if (progressBar) progressBar.style.width = "0%";
+  });
+};
+
+initMusicPlayer();
 
 // ─── Components of my life carousel arrow navigation ────────────────────────
 const initCarouselControls = () => {

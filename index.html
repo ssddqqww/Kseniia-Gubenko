@@ -9,8 +9,8 @@
     <meta property="og:description" content="Software developer, AI researcher & healthtech builder. INFOMATRIX 2025 Bronze · IOAI National Finalist." />
     <meta property="og:type" content="website" />
     <title>Kseniia Gubenko — Portfolio</title>
-    <link rel="stylesheet" href="styles.css?v=20261108v13" />
-    <script src="script.js?v=20261108v13" type="module"></script>
+    <link rel="stylesheet" href="styles.css?v=20261108v14" />
+    <script src="script.js?v=20261108v14" type="module"></script>
   </head>
   <body class="professional-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -324,5 +324,25 @@
         </a>
       </div>
     </nav>
+
+    <!-- Floating Music Player Pill (Radnaabazar style) -->
+    <aside class="music-player-pill" id="music-player" aria-label="Music player">
+      <audio id="global-audio" src="assets/nujabes-aruarian-dance.mp3" preload="none"></audio>
+      <img src="assets/nujabes-aruarian-dance.jpg" alt="Aruarian Dance album cover" class="music-cover" />
+      <div class="music-info">
+        <span class="music-title">Aruarian Dance</span>
+        <span class="music-artist">Nujabes</span>
+      </div>
+      <button class="music-toggle-btn" id="music-toggle-btn" type="button" aria-label="Play/Pause music">
+        <svg class="music-icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg class="music-icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+          <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+          <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+        </svg>
+      </button>
+      <div class="music-progress-bar" id="music-progress-bar" aria-hidden="true"></div>
+    </aside>
   </body>
 </html>
