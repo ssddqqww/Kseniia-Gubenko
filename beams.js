@@ -3,90 +3,33 @@
 const canvas = document.getElementById("beams-canvas");
 const container = document.getElementById("beams-container");
 
-// ─── 1. Moving Neon Orb: pink light traveling along the perimeter of the card ───
+// ─── 1. Moving Neon Orb: smooth, soft, unhurried pink light along perimeter ───
 const initThankyouMovingBorder = () => {
   const card = document.getElementById("beams-container");
   if (!card) return;
+  const svgRect = card.querySelector(".thankyou-border-svg rect");
   const orb = card.querySelector(".thankyou-border-orb");
-  if (!orb) return;
+  if (!svgRect || !orb) return;
 
   let progress = 0;
-  const speed = 0.00014; // smooth constant pace around perimeter
+  // 24 seconds per loop: smooth, slow, and unhurried
+  const duration = 24000;
   let lastTime = performance.now();
 
   const step = (now) => {
     const dt = now - lastTime;
     lastTime = now;
 
-    progress = (progress + speed * dt) % 1;
+    progress = (progress + dt / duration) % 1;
 
-    const w = card.offsetWidth;
-    const h = card.offsetHeight;
-    if (w > 0 && h > 0) {
-      const r = 32;
-      const straightW = Math.max(0, w - 2 * r);
-      const straightH = Math.max(0, h - 2 * r);
-      const cornerLen = 0.5 * Math.PI * r;
-      const totalLen = 2 * straightW + 2 * straightH + 4 * cornerLen;
-
-      const d = progress * totalLen;
-      let x = 0;
-      let y = 0;
-
-      // 1. Top straight (left to right)
-      if (d <= straightW) {
-        x = r + d;
-        y = 0;
+    try {
+      const totalLen = svgRect.getTotalLength();
+      if (totalLen > 0) {
+        // Native SVG path coordinate calculation: perfectly continuous, never vanishes
+        const pt = svgRect.getPointAtLength(progress * totalLen);
+        orb.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
       }
-      // 2. Top-right corner
-      else if (d <= straightW + cornerLen) {
-        const cd = d - straightW;
-        const a = -Math.PI / 2 + (cd / cornerLen) * (Math.PI / 2);
-        x = w - r + Math.cos(a) * r;
-        y = r + Math.sin(a) * r;
-      }
-      // 3. Right straight (top to bottom)
-      else if (d <= straightW + cornerLen + straightH) {
-        const sd = d - (straightW + cornerLen);
-        x = w;
-        y = r + sd;
-      }
-      // 4. Bottom-right corner
-      else if (d <= straightW + 2 * cornerLen + straightH) {
-        const cd = d - (straightW + cornerLen + straightH);
-        const a = (cd / cornerLen) * (Math.PI / 2);
-        x = w - r + Math.cos(a) * r;
-        y = h - r + Math.sin(a) * r;
-      }
-      // 5. Bottom straight (right to left)
-      else if (d <= 2 * straightW + 2 * cornerLen + straightH) {
-        const sd = d - (straightW + 2 * cornerLen + straightH);
-        x = w - r - sd;
-        y = h;
-      }
-      // 6. Bottom-left corner
-      else if (d <= 2 * straightW + 3 * cornerLen + straightH) {
-        const cd = d - (2 * straightW + 2 * cornerLen + straightH);
-        const a = Math.PI / 2 + (cd / cornerLen) * (Math.PI / 2);
-        x = r + Math.cos(a) * r;
-        y = h - r + Math.sin(a) * r;
-      }
-      // 7. Left straight (bottom to top)
-      else if (d <= 2 * straightW + 3 * cornerLen + 2 * straightH) {
-        const sd = d - (2 * straightW + 3 * cornerLen + 2 * straightH);
-        x = 0;
-        y = h - r - sd;
-      }
-      // 8. Top-left corner
-      else {
-        const cd = d - (2 * straightW + 3 * cornerLen + 2 * straightH);
-        const a = Math.PI + (cd / cornerLen) * (Math.PI / 2);
-        x = r + Math.cos(a) * r;
-        y = r + Math.sin(a) * r;
-      }
-
-      orb.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-    }
+    } catch (e) {}
 
     requestAnimationFrame(step);
   };

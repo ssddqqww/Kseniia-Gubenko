@@ -7,10 +7,10 @@
     <meta property="og:title" content="Personal | Kseniia Gubenko — Portfolio" />
     <meta property="og:type" content="website" />
     <title>Personal | Kseniia Gubenko — Portfolio</title>
-    <link rel="stylesheet" href="styles.css?v=20261108v7" />
-    <script src="script.js?v=20261108v7" type="module"></script>
-    <script src="globe.js?v=20261108v7" type="module"></script>
-    <script src="beams.js?v=20261108v7" type="module"></script>
+    <link rel="stylesheet" href="styles.css?v=20261108v8" />
+    <script src="script.js?v=20261108v8" type="module"></script>
+    <script src="globe.js?v=20261108v8" type="module"></script>
+    <script src="beams.js?v=20261108v8" type="module"></script>
   </head>
   <body class="personal-page">
     <div class="page-transition" aria-hidden="true" data-page-transition>
@@ -47,21 +47,21 @@
 
             <article class="hobby-card hobby-card-riding">
               <div class="hobby-copy">
-                <h2>Horse Riding</h2>
-                <p>I have been horse riding for more than two years. It continually takes me beyond my comfort zone while teaching me patience, trust, and how to build a genuine connection with an animal.</p>
-              </div>
-              <figure class="hobby-media">
-                <img src="assets/personal-horse-riding.jpg" alt="Kseniia spending time with a horse after riding" />
-              </figure>
-            </article>
-
-            <article class="hobby-card hobby-card-books">
-              <div class="hobby-copy">
                 <h2>Books</h2>
                 <p>During the summer, I often immerse myself in books about psychology and human behavior. One of the first—and still one of my favorites—is Robert Greene’s <em>The Laws of Human Nature</em>.</p>
               </div>
               <figure class="hobby-media">
                 <img src="assets/personal-books.jpg" alt="Kseniia reading beside a library bookshelf" />
+              </figure>
+            </article>
+
+            <article class="hobby-card hobby-card-books">
+              <div class="hobby-copy">
+                <h2>Horse Riding</h2>
+                <p>I have been horse riding for more than two years. It continually takes me beyond my comfort zone while teaching me patience, trust, and how to build a genuine connection with an animal.</p>
+              </div>
+              <figure class="hobby-media">
+                <video src="assets/horse-riding.mov" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block;"></video>
               </figure>
             </article>
 
@@ -135,6 +135,9 @@
       <!-- For visiting my profile, thank you (Aceternity Beams with moving neon orb) -->
       <div class="shell thankyou-shell">
         <section class="personal-thankyou" id="beams-container" aria-label="Thank you message">
+          <svg class="thankyou-border-svg" aria-hidden="true">
+            <rect width="100%" height="100%" rx="32" ry="32" fill="none" />
+          </svg>
           <div class="thankyou-border-orb" aria-hidden="true"></div>
           <canvas id="beams-canvas" class="beams-canvas" aria-hidden="true"></canvas>
 
