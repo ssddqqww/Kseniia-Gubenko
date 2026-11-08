@@ -4036,22 +4036,29 @@ h4 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* Horse Riding card spacing polish - lift video up and eliminate excessive gap */
+/* Horse Riding card spacing polish - lift video up, frame it, and leave breathing room at bottom */
+.hobby-card-books,
+.hobby-card-polyglot {
+  min-height: 640px !important;
+}
+
 .hobby-card-books {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
+  justify-content: flex-start !important;
+  padding: 42px 42px 36px !important;
 }
 
 .hobby-card-books .hobby-copy {
   min-height: 0 !important;
-  margin-bottom: 22px !important;
+  margin-bottom: 24px !important;
   padding-bottom: 0 !important;
 }
 
 .hobby-card-books .hobby-media {
   height: 380px !important;
-  margin-top: 0 !important;
+  border-radius: 20px !important;
+  margin: 0 !important;
 }
 
 /* 9. Radnaabazar-style "Components of my life" Carousel */
@@ -4062,11 +4069,14 @@ h4 {
 }
 
 .components-life-header {
+  margin-bottom: 8px !important;
+}
+
+.carousel-nav-row {
   display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 20px !important;
-  margin-bottom: 28px !important;
+  justify-content: flex-end !important;
+  margin-bottom: 16px !important;
+  padding-right: 4px !important;
 }
 
 .carousel-nav-arrows {
@@ -4079,27 +4089,35 @@ h4 {
   width: 44px !important;
   height: 44px !important;
   border-radius: 50% !important;
-  background: #ffffff !important;
-  color: #18181b !important;
+  background: #f1f2f4 !important;
+  color: #475569 !important;
   border: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   cursor: pointer !important;
   transition: background 0.2s ease, opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
   padding: 0 !important;
 }
 
+.carousel-arrow svg {
+  stroke: #475569 !important;
+  transition: stroke 0.2s ease !important;
+}
+
 .carousel-arrow:hover:not(:disabled) {
-  background: #f4f4f5 !important;
+  background: #ffffff !important;
   transform: scale(1.06) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
+.carousel-arrow:hover:not(:disabled) svg {
+  stroke: #1e293b !important;
 }
 
 .carousel-arrow:disabled {
-  background: #52525b !important;
-  color: #27272a !important;
+  background: #e2e4e8 !important;
   opacity: 0.45 !important;
   cursor: default !important;
   transform: none !important;

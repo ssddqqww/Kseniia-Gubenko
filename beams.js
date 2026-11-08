@@ -3,31 +3,40 @@
 const canvas = document.getElementById("beams-canvas");
 const container = document.getElementById("beams-container");
 
-// ─── 1. Moving Neon Orb: smooth, soft, unhurried pink light along perimeter ───
+// ─── 1. Moving Neon Orbs: 4 smooth, soft, unhurried pink lights along perimeter ───
 const initThankyouMovingBorder = () => {
   const card = document.getElementById("beams-container");
   if (!card) return;
   const svgRect = card.querySelector(".thankyou-border-svg rect");
-  const orb = card.querySelector(".thankyou-border-orb");
-  if (!svgRect || !orb) return;
+  const orbs = card.querySelectorAll(".thankyou-border-orb");
+  if (!svgRect || orbs.length === 0) return;
 
-  let progress = 0;
-  // 24 seconds per loop: smooth, slow, and unhurried
+  // 4 orbs spaced nicely around the perimeter with subtle speed differences for organic motion
+  const configs = [
+    { offset: 0.0, speed: 1.0 },
+    { offset: 0.25, speed: 0.94 },
+    { offset: 0.5, speed: 1.06 },
+    { offset: 0.75, speed: 0.98 }
+  ];
+
   const duration = 24000;
   let lastTime = performance.now();
+  let elapsed = 0;
 
   const step = (now) => {
     const dt = now - lastTime;
     lastTime = now;
-
-    progress = (progress + dt / duration) % 1;
+    elapsed += dt;
 
     try {
       const totalLen = svgRect.getTotalLength();
       if (totalLen > 0) {
-        // Native SVG path coordinate calculation: perfectly continuous, never vanishes
-        const pt = svgRect.getPointAtLength(progress * totalLen);
-        orb.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+        orbs.forEach((orb, i) => {
+          const cfg = configs[i] || { offset: (i * 0.25) % 1, speed: 1.0 };
+          const p = (cfg.offset + (elapsed / duration) * cfg.speed) % 1;
+          const pt = svgRect.getPointAtLength(p * totalLen);
+          orb.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
+        });
       }
     } catch (e) {}
 
