@@ -1,17 +1,17 @@
-// Aceternity Background Beams with Collision + MovingBorder neon perimeter
+// Aceternity Background Beams with Collision + Moving Neon Orb on card perimeter
 
 const canvas = document.getElementById("beams-canvas");
 const container = document.getElementById("beams-container");
-const textEl = document.querySelector(".beams-gradient-text");
 
-// ─── 1. MovingBorder: smooth pink neon traveling around the card edge ───
+// ─── 1. Moving Neon Orb: pink light traveling along the perimeter of the card ───
 const initThankyouMovingBorder = () => {
-  const wrap = document.querySelector(".thankyou-border-wrap");
-  const orb = document.querySelector(".thankyou-border-orb");
-  if (!wrap || !orb) return;
+  const card = document.getElementById("beams-container");
+  if (!card) return;
+  const orb = card.querySelector(".thankyou-border-orb");
+  if (!orb) return;
 
   let progress = 0;
-  const speed = 0.00008; // smooth constant pace around perimeter
+  const speed = 0.00014; // smooth constant pace around perimeter
   let lastTime = performance.now();
 
   const step = (now) => {
@@ -20,8 +20,8 @@ const initThankyouMovingBorder = () => {
 
     progress = (progress + speed * dt) % 1;
 
-    const w = wrap.offsetWidth;
-    const h = wrap.offsetHeight;
+    const w = card.offsetWidth;
+    const h = card.offsetHeight;
     if (w > 0 && h > 0) {
       const r = 32;
       const straightW = Math.max(0, w - 2 * r);
@@ -73,7 +73,7 @@ const initThankyouMovingBorder = () => {
       }
       // 7. Left straight (bottom to top)
       else if (d <= 2 * straightW + 3 * cornerLen + 2 * straightH) {
-        const sd = d - (2 * straightW + 3 * cornerLen + straightH);
+        const sd = d - (2 * straightW + 3 * cornerLen + 2 * straightH);
         x = 0;
         y = h - r - sd;
       }
@@ -96,7 +96,7 @@ const initThankyouMovingBorder = () => {
 
 initThankyouMovingBorder();
 
-// ─── 2. Background Beams with Collision at the VERY BOTTOM ───
+// ─── 2. Background Beams with Collision ───
 if (canvas && container) {
   const ctx = canvas.getContext("2d");
   let width = (canvas.width = container.offsetWidth);
@@ -115,54 +115,45 @@ if (canvas && container) {
   class Beam {
     constructor(x, speed) {
       this.x = x ?? Math.random() * width;
-      this.len = 65 + Math.random() * 55;
+      this.len = 70 + Math.random() * 60;
       this.y = -this.len;
-      // Drops fall slightly slower, more graceful
-      this.speed = speed ?? (2.0 + Math.random() * 1.8);
+      // Faster, energetic falling speed
+      this.speed = speed ?? (4.2 + Math.random() * 3.5);
     }
 
     update() {
       this.y += this.speed;
-      // Break slightly higher up from the very bottom border (~26px above bottom)
-      const floorY = height - 26;
+      // Break slightly above the absolute bottom (~24px from bottom edge)
+      const floorY = height - 24;
 
-      // When the head of the beam reaches the floor
       if (this.y >= floorY) {
-        // Spawn small soft puddle
         puddles.push(new Puddle(this.x, floorY));
 
-        // Spawn a few soft splash particles
-        const count = 6 + Math.floor(Math.random() * 4);
+        const count = 7 + Math.floor(Math.random() * 5);
         for (let i = 0; i < count; i++) {
           particles.push(new Particle(this.x, floorY));
         }
 
-        // Gentle text pulse on landing
-        if (textEl && Math.random() < 0.25) {
-          textEl.classList.add("is-pulsing");
-          setTimeout(() => textEl.classList.remove("is-pulsing"), 280);
-        }
-
-        return false; // Beam is done
+        return false;
       }
       return true;
     }
 
     draw() {
       const startY = Math.max(0, this.y - this.len);
-      const floorY = height - 26;
+      const floorY = height - 24;
       const endY = Math.min(floorY, this.y);
       if (endY <= 0) return;
 
       const grad = ctx.createLinearGradient(this.x, startY, this.x, endY);
       grad.addColorStop(0, "rgba(255, 64, 129, 0)");
-      grad.addColorStop(0.65, "rgba(255, 64, 129, 0.45)");
-      grad.addColorStop(0.9, "#ff4081");
+      grad.addColorStop(0.65, "rgba(255, 64, 129, 0.5)");
+      grad.addColorStop(0.92, "#ff4081");
       grad.addColorStop(1, "#ffffff");
 
       ctx.save();
       ctx.strokeStyle = grad;
-      ctx.lineWidth = 1.6;
+      ctx.lineWidth = 1.8;
       ctx.lineCap = "round";
       ctx.beginPath();
       ctx.moveTo(this.x, startY);
@@ -174,21 +165,21 @@ if (canvas && container) {
       ctx.shadowColor = "#ff4081";
       ctx.shadowBlur = 8;
       ctx.beginPath();
-      ctx.arc(this.x, endY, 1.6, 0, Math.PI * 2);
+      ctx.arc(this.x, endY, 1.8, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
   }
 
-  // Small soft puddle that expands horizontally and fades gently
+  // Soft small puddle that expands horizontally and fades
   class Puddle {
     constructor(x, y) {
       this.x = x;
       this.y = y;
       this.life = 1.0;
-      this.maxLife = 46; // frames (~0.75s, softer and smoother)
+      this.maxLife = 36;
       this.currentFrame = 0;
-      this.maxRadius = 24 + Math.random() * 16; // 24 - 40px (delicate small puddle)
+      this.maxRadius = 26 + Math.random() * 18;
     }
 
     update() {
@@ -203,7 +194,6 @@ if (canvas && container) {
       const alpha = Math.max(0, this.life);
 
       ctx.save();
-      // Glowing line puddle
       const grad = ctx.createLinearGradient(
         this.x - currentRadius,
         this.y,
@@ -211,20 +201,19 @@ if (canvas && container) {
         this.y
       );
       grad.addColorStop(0, "rgba(255, 64, 129, 0)");
-      grad.addColorStop(0.5, `rgba(255, 64, 129, ${0.65 * alpha})`);
+      grad.addColorStop(0.5, `rgba(255, 64, 129, ${0.75 * alpha})`);
       grad.addColorStop(1, "rgba(255, 64, 129, 0)");
 
       ctx.strokeStyle = grad;
-      ctx.lineWidth = 1.5;
-      ctx.shadowColor = "rgba(255, 64, 129, 0.6)";
+      ctx.lineWidth = 1.6;
+      ctx.shadowColor = "rgba(255, 64, 129, 0.7)";
       ctx.shadowBlur = 5;
       ctx.beginPath();
       ctx.moveTo(this.x - currentRadius, this.y);
       ctx.lineTo(this.x + currentRadius, this.y);
       ctx.stroke();
 
-      // Very soft small center glow
-      ctx.fillStyle = `rgba(255, 255, 255, ${0.5 * alpha})`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.6 * alpha})`;
       ctx.beginPath();
       ctx.arc(this.x, this.y, 1.2, 0, Math.PI * 2);
       ctx.fill();
@@ -232,17 +221,17 @@ if (canvas && container) {
     }
   }
 
-  // Gentle small splash particles
+  // Splash particles
   class Particle {
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.vx = (Math.random() - 0.5) * 2.0;
-      this.vy = -(0.8 + Math.random() * 1.8); // gentle soft lift
-      this.gravity = 0.08;
+      this.vx = (Math.random() - 0.5) * 2.4;
+      this.vy = -(1.0 + Math.random() * 2.2);
+      this.gravity = 0.1;
       this.life = 1.0;
-      this.decay = 0.022 + Math.random() * 0.015;
-      this.radius = 0.8 + Math.random() * 0.8;
+      this.decay = 0.026 + Math.random() * 0.018;
+      this.radius = 0.9 + Math.random() * 0.8;
     }
 
     update() {
@@ -256,9 +245,9 @@ if (canvas && container) {
     draw() {
       const alpha = Math.max(0, this.life);
       ctx.save();
-      ctx.fillStyle = `rgba(255, 120, 165, ${0.75 * alpha})`;
-      ctx.shadowColor = "rgba(255, 64, 129, 0.7)";
-      ctx.shadowBlur = 3;
+      ctx.fillStyle = `rgba(255, 115, 160, ${0.85 * alpha})`;
+      ctx.shadowColor = "rgba(255, 64, 129, 0.8)";
+      ctx.shadowBlur = 4;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
@@ -271,16 +260,16 @@ if (canvas && container) {
     ctx.clearRect(0, 0, width, height);
 
     // Spawn falling drops
-    if (t - lastSpawn > 350) {
-      if (beams.length < 12) {
-        const margin = width * 0.08;
+    if (t - lastSpawn > 300) {
+      if (beams.length < 14) {
+        const margin = width * 0.06;
         const x = margin + Math.random() * (width - 2 * margin);
         beams.push(new Beam(x));
       }
       lastSpawn = t;
     }
 
-    // 1. Draw puddles on bottom floor
+    // 1. Draw puddles
     for (let i = puddles.length - 1; i >= 0; i--) {
       if (!puddles[i].update()) {
         puddles.splice(i, 1);
@@ -312,10 +301,10 @@ if (canvas && container) {
 
   requestAnimationFrame(loop);
 
-  // Click interactive: drop a quick beam at clicked X coordinate that falls straight to the bottom and splashes
+  // Click interactive: drop a rapid beam at clicked X coordinate
   container.addEventListener("click", (e) => {
     const rect = container.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
-    beams.push(new Beam(clickX, 7));
+    beams.push(new Beam(clickX, 8));
   });
 }
