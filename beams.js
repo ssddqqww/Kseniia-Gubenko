@@ -117,20 +117,22 @@ if (canvas && container) {
       this.x = x ?? Math.random() * width;
       this.len = 65 + Math.random() * 55;
       this.y = -this.len;
-      this.speed = speed ?? (3.6 + Math.random() * 3.2);
+      // Drops fall slightly slower, more graceful
+      this.speed = speed ?? (2.0 + Math.random() * 1.8);
     }
 
     update() {
       this.y += this.speed;
-      const floorY = height - 2;
+      // Break slightly higher up from the very bottom border (~26px above bottom)
+      const floorY = height - 26;
 
-      // When the head of the beam reaches the very bottom floor
+      // When the head of the beam reaches the floor
       if (this.y >= floorY) {
-        // Spawn small puddle at the very bottom
+        // Spawn small soft puddle
         puddles.push(new Puddle(this.x, floorY));
 
-        // Spawn small splash particles
-        const count = 10 + Math.floor(Math.random() * 6);
+        // Spawn a few soft splash particles
+        const count = 6 + Math.floor(Math.random() * 4);
         for (let i = 0; i < count; i++) {
           particles.push(new Particle(this.x, floorY));
         }
@@ -148,7 +150,8 @@ if (canvas && container) {
 
     draw() {
       const startY = Math.max(0, this.y - this.len);
-      const endY = Math.min(height - 2, this.y);
+      const floorY = height - 26;
+      const endY = Math.min(floorY, this.y);
       if (endY <= 0) return;
 
       const grad = ctx.createLinearGradient(this.x, startY, this.x, endY);
@@ -159,7 +162,7 @@ if (canvas && container) {
 
       ctx.save();
       ctx.strokeStyle = grad;
-      ctx.lineWidth = 1.8;
+      ctx.lineWidth = 1.6;
       ctx.lineCap = "round";
       ctx.beginPath();
       ctx.moveTo(this.x, startY);
@@ -171,21 +174,21 @@ if (canvas && container) {
       ctx.shadowColor = "#ff4081";
       ctx.shadowBlur = 8;
       ctx.beginPath();
-      ctx.arc(this.x, endY, 1.8, 0, Math.PI * 2);
+      ctx.arc(this.x, endY, 1.6, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
   }
 
-  // Small puddle that expands horizontally right along the bottom floor and fades
+  // Small soft puddle that expands horizontally and fades gently
   class Puddle {
     constructor(x, y) {
       this.x = x;
       this.y = y;
       this.life = 1.0;
-      this.maxLife = 38; // frames (~0.65s)
+      this.maxLife = 46; // frames (~0.75s, softer and smoother)
       this.currentFrame = 0;
-      this.maxRadius = 32 + Math.random() * 20; // 32 - 52px (small puddle, not huge!)
+      this.maxRadius = 24 + Math.random() * 16; // 24 - 40px (delicate small puddle)
     }
 
     update() {
@@ -200,7 +203,7 @@ if (canvas && container) {
       const alpha = Math.max(0, this.life);
 
       ctx.save();
-      // Glowing line puddle on the bottom floor
+      // Glowing line puddle
       const grad = ctx.createLinearGradient(
         this.x - currentRadius,
         this.y,
@@ -208,38 +211,38 @@ if (canvas && container) {
         this.y
       );
       grad.addColorStop(0, "rgba(255, 64, 129, 0)");
-      grad.addColorStop(0.5, `rgba(255, 64, 129, ${0.9 * alpha})`);
+      grad.addColorStop(0.5, `rgba(255, 64, 129, ${0.65 * alpha})`);
       grad.addColorStop(1, "rgba(255, 64, 129, 0)");
 
       ctx.strokeStyle = grad;
-      ctx.lineWidth = 2;
-      ctx.shadowColor = "rgba(255, 64, 129, 0.8)";
-      ctx.shadowBlur = 6;
+      ctx.lineWidth = 1.5;
+      ctx.shadowColor = "rgba(255, 64, 129, 0.6)";
+      ctx.shadowBlur = 5;
       ctx.beginPath();
       ctx.moveTo(this.x - currentRadius, this.y);
       ctx.lineTo(this.x + currentRadius, this.y);
       ctx.stroke();
 
       // Very soft small center glow
-      ctx.fillStyle = `rgba(255, 255, 255, ${0.7 * alpha})`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.5 * alpha})`;
       ctx.beginPath();
-      ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, 1.2, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
   }
 
-  // Small splash particles popping upward and falling back down
+  // Gentle small splash particles
   class Particle {
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.vx = (Math.random() - 0.5) * 2.8;
-      this.vy = -(1.2 + Math.random() * 2.8); // pop upward
-      this.gravity = 0.12;
+      this.vx = (Math.random() - 0.5) * 2.0;
+      this.vy = -(0.8 + Math.random() * 1.8); // gentle soft lift
+      this.gravity = 0.08;
       this.life = 1.0;
-      this.decay = 0.026 + Math.random() * 0.02;
-      this.radius = 1.0 + Math.random() * 1.0;
+      this.decay = 0.022 + Math.random() * 0.015;
+      this.radius = 0.8 + Math.random() * 0.8;
     }
 
     update() {
@@ -253,9 +256,9 @@ if (canvas && container) {
     draw() {
       const alpha = Math.max(0, this.life);
       ctx.save();
-      ctx.fillStyle = `rgba(255, 105, 155, ${alpha})`;
-      ctx.shadowColor = "rgba(255, 64, 129, 0.9)";
-      ctx.shadowBlur = 4;
+      ctx.fillStyle = `rgba(255, 120, 165, ${0.75 * alpha})`;
+      ctx.shadowColor = "rgba(255, 64, 129, 0.7)";
+      ctx.shadowBlur = 3;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
