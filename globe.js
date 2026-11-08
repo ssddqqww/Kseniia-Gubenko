@@ -5,7 +5,7 @@ const canvas = document.getElementById("globe-canvas");
 if (canvas) {
   let phi = 0;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const size = 560;
+  const size = 740; // Larger globe to fill card generously and center perfectly
 
   try {
     const globe = createGlobe(canvas, {
@@ -16,7 +16,7 @@ if (canvas) {
       theta: 0.18,
       dark: 1,
       diffuse: 1.25,
-      mapSamples: 16000,
+      mapSamples: 18000,
       mapBrightness: 6,
       baseColor: [0.85, 0.85, 0.9],     // Crisp bright white / silver dotted continents (like Radnaabazar)
       markerColor: [0.1, 0.8, 1],       // Luminous cyan location markers

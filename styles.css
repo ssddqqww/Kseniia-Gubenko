@@ -2763,11 +2763,11 @@ h4 {
   left: 50% !important;
   right: auto !important;
   transform: translateX(-50%) !important;
-  bottom: -220px !important;
-  width: 580px !important;
-  height: 580px !important;
+  bottom: -160px !important;
+  width: 740px !important;
+  height: 740px !important;
   pointer-events: none;
-  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.22));
+  filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
 }
 
 #globe-canvas {
@@ -4547,7 +4547,8 @@ h4 {
   font-size: 1.15rem;
   line-height: 1;
   font-weight: 700;
-  transition: transform 180ms ease;
+  transition: none !important;
+  transform: none !important;
 }
 
 .hero-cv-btn:hover {
@@ -4557,7 +4558,8 @@ h4 {
 }
 
 .hero-cv-btn:hover b {
-  transform: translateX(3px);
+  transform: none !important;
+  transition: none !important;
 }
 
 /* 2. Hero indent: slightly to the left (~10-15px) */
@@ -5016,15 +5018,15 @@ h4 {
 
 .components-card {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateY(50px) scale(0.97);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 800ms cubic-bezier(0.22, 1, 0.36, 1) !important;
   transition-delay: calc(var(--card-delay, 0) * 1ms) !important;
   will-change: opacity, transform;
 }
 
 .components-card.is-revealed {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: translateY(0) scale(1) !important;
 }
 
 /* =========================================================

@@ -264,7 +264,7 @@ const initCardScrollReveal = () => {
     if (revealed) return;
     revealed = true;
     cards.forEach((card, idx) => {
-      card.style.setProperty("--card-delay", String(idx * 140));
+      card.style.setProperty("--card-delay", String(idx * 110));
       card.classList.add("is-revealed");
     });
   };
@@ -277,7 +277,7 @@ const initCardScrollReveal = () => {
           observer.disconnect();
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.05, rootMargin: "0px 0px 160px 0px" });
     observer.observe(section);
   } else {
     revealCards();
