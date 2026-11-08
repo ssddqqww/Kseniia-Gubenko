@@ -255,28 +255,42 @@ initHonorOrbs();
 
 // ─── Components carousel: Radnaabazar-style scroll reveal ───────────────────
 const initCardScrollReveal = () => {
-  const cards = document.querySelectorAll(".js-card-reveal");
+  const section = document.querySelector(".components-life-section");
+  const cards = document.querySelectorAll(".components-card");
   if (!cards.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const idx = parseInt(card.dataset.cardIndex || "0", 10);
-        // Exact Radnaabazar timing: 200ms base delay + 200ms * index
-        card.style.setProperty("--card-delay", String(200 + idx * 200));
-        card.classList.add("is-revealed");
-        observer.unobserve(card);
-      }
+  let revealed = false;
+  const revealCards = () => {
+    if (revealed) return;
+    revealed = true;
+    cards.forEach((card, idx) => {
+      card.style.setProperty("--card-delay", String(idx * 150));
+      card.classList.add("is-revealed");
     });
-  }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+  };
 
-  cards.forEach(card => observer.observe(card));
+  if ("IntersectionObserver" in window && section) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          revealCards();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(section);
+  } else {
+    revealCards();
+  }
+
+  // Safety fallback: ensure cards are always revealed even if fast scrolled
+  setTimeout(revealCards, 1200);
 };
 
 initCardScrollReveal();
 
-// ─── Components of my life carousel arrow navigation ────────────────────────const initCarouselControls = () => {
+// ─── Components of my life carousel arrow navigation ────────────────────────
+const initCarouselControls = () => {
   const container = document.querySelector(".components-carousel-container");
   const prevBtn = document.querySelector(".carousel-arrow.carousel-prev");
   const nextBtn = document.querySelector(".carousel-arrow.carousel-next");
