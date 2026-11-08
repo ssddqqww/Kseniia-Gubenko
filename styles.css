@@ -4882,3 +4882,139 @@ h4 {
   font-weight: 500 !important;
 }
 
+
+/* =========================================================
+   BOOK FAN CARD — Radnaabazar Enjoyer of Good Books style
+   ========================================================= */
+
+/* Container that sits in place of the old hobby-media */
+.book-fan-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+  flex: 1;
+  padding: 16px 0 20px;
+  min-height: 220px;
+}
+
+.book-fan-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.book-fan-row-top {
+  margin-left: -80px;
+}
+
+.book-fan-row-bottom {
+  margin-left: 0px;
+}
+
+.book-fan-card {
+  flex-shrink: 0;
+  margin-right: -16px;
+  margin-top: 16px;
+  padding: 3px;
+  background: #1e1e2e;
+  border: 1px solid #3a3a4a;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(var(--r, 0deg));
+  transform-origin: bottom center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), z-index 0s, box-shadow 220ms ease;
+  cursor: default;
+  will-change: transform;
+}
+
+.book-fan-card img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 7px;
+  pointer-events: none;
+  transition: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.book-fan-card:hover {
+  transform: rotate(0deg) scale(1.08) !important;
+  z-index: 100 !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+}
+
+/* fade veil on left & right edges */
+.book-fan-veil {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  pointer-events: none;
+  z-index: 10;
+}
+.book-fan-veil-left {
+  left: 0;
+  background: linear-gradient(to right, #0d0c17, transparent);
+}
+.book-fan-veil-right {
+  right: 0;
+  background: linear-gradient(to left, #0d0c17, transparent);
+}
+
+/* hobby-card-riding now stretches to fit the fan */
+.hobby-card-riding {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding-bottom: 0 !important;
+  overflow: hidden !important;
+}
+
+.hobby-card-riding .hobby-copy {
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 16px !important;
+}
+
+/* =========================================================
+   COMPONENTS CAROUSEL — scroll-reveal (Radnaabazar style)
+   opacity:0 translateY(20px) → opacity:1 translateY(0)
+   with staggered delay per card index
+   ========================================================= */
+
+.js-card-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 500ms ease, transform 500ms ease;
+  transition-delay: calc(var(--card-delay, 0) * 1ms);
+}
+
+.js-card-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   COMPONENTS CARDS — fully disable ALL hover effects
+   ========================================================= */
+
+.components-card,
+.components-card:hover,
+.components-card:focus-visible {
+  transform: none !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45) !important;
+  transition: none !important;
+  outline: none !important;
+}
+
+.components-card-img,
+.components-card:hover .components-card-img {
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}

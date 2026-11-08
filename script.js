@@ -253,8 +253,30 @@ const initHonorOrbs = () => {
 
 initHonorOrbs();
 
-// ─── Components of my life carousel arrow navigation ────────────────────────
-const initCarouselControls = () => {
+// ─── Components carousel: Radnaabazar-style scroll reveal ───────────────────
+const initCardScrollReveal = () => {
+  const cards = document.querySelectorAll(".js-card-reveal");
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const idx = parseInt(card.dataset.cardIndex || "0", 10);
+        // Exact Radnaabazar timing: 200ms base delay + 200ms * index
+        card.style.setProperty("--card-delay", String(200 + idx * 200));
+        card.classList.add("is-revealed");
+        observer.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+
+  cards.forEach(card => observer.observe(card));
+};
+
+initCardScrollReveal();
+
+// ─── Components of my life carousel arrow navigation ────────────────────────const initCarouselControls = () => {
   const container = document.querySelector(".components-carousel-container");
   const prevBtn = document.querySelector(".carousel-arrow.carousel-prev");
   const nextBtn = document.querySelector(".carousel-arrow.carousel-next");
