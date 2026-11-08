@@ -3,7 +3,7 @@
 const canvas = document.getElementById("beams-canvas");
 const container = document.getElementById("beams-container");
 
-// ─── 1. Moving Neon Orbs: 4 smooth, soft, unhurried pink lights along perimeter ───
+// ─── 1. Moving Neon Orbs: 4 smooth, soft pink lights with exact equal spacing ───
 const initThankyouMovingBorder = () => {
   const card = document.getElementById("beams-container");
   if (!card) return;
@@ -11,15 +11,9 @@ const initThankyouMovingBorder = () => {
   const orbs = card.querySelectorAll(".thankyou-border-orb");
   if (!svgRect || orbs.length === 0) return;
 
-  // 4 orbs spaced nicely around the perimeter with subtle speed differences for organic motion
-  const configs = [
-    { offset: 0.0, speed: 1.0 },
-    { offset: 0.25, speed: 0.94 },
-    { offset: 0.5, speed: 1.06 },
-    { offset: 0.75, speed: 0.98 }
-  ];
-
-  const duration = 24000;
+  // 4 orbs with strictly identical distances (each 25% of the perimeter apart)
+  const baseOffsets = [0.0, 0.25, 0.5, 0.75];
+  const duration = 26000;
   let lastTime = performance.now();
   let elapsed = 0;
 
@@ -28,12 +22,14 @@ const initThankyouMovingBorder = () => {
     lastTime = now;
     elapsed += dt;
 
+    const baseProgress = (elapsed / duration) % 1;
+
     try {
       const totalLen = svgRect.getTotalLength();
       if (totalLen > 0) {
         orbs.forEach((orb, i) => {
-          const cfg = configs[i] || { offset: (i * 0.25) % 1, speed: 1.0 };
-          const p = (cfg.offset + (elapsed / duration) * cfg.speed) % 1;
+          const offset = baseOffsets[i] !== undefined ? baseOffsets[i] : (i / orbs.length);
+          const p = (offset + baseProgress) % 1;
           const pt = svgRect.getPointAtLength(p * totalLen);
           orb.style.transform = `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`;
         });
