@@ -5924,9 +5924,9 @@ h4 {
   .contact-email-address { font-size: 0.65rem !important; }
   .contact-copy-btn { width: 32px !important; height: 32px !important; flex-shrink: 0 !important; }
   
-  /* Peer button - EVEN WIDER (90-95% viewport), LARGER GAP from email-copy */
-  .contact-personal-cta { margin: 32px auto 0 !important; width: 100% !important; max-width: 95vw !important; justify-content: center !important; }
-  .contact-cta-enlarged { width: 100% !important; height: 46px !important; min-width: unset !important; font-size: 0.75rem !important; justify-content: center !important; padding: 0 32px !important; }
+  /* Peer button - 100% WIDE on mobile */
+  .contact-personal-cta { margin: 32px auto 0 !important; width: 100% !important; max-width: 100% !important; justify-content: center !important; }
+  .contact-cta-enlarged { width: 100% !important; height: 46px !important; min-width: unset !important; font-size: 0.75rem !important; justify-content: center !important; padding: 0 24px !important; }
   
   /* Footer - centered name and centered social row (3 icons in ONE ROW) */
   .contact-social-circles { 
