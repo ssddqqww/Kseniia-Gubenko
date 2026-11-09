@@ -1938,8 +1938,8 @@ img { display: block; max-width: 100%; }
 }
 
 .projects-grid {
-  max-width: 1040px;
-  gap: 24px;
+  max-width: 1120px;
+  gap: 32px;
 }
 
 .project-tile,
@@ -1949,7 +1949,8 @@ img { display: block; max-width: 100%; }
 }
 
 .project-pin-surface {
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 22px;
   transition: transform 1050ms cubic-bezier(.16,1,.3,1), border-color 800ms ease, box-shadow 900ms ease;
 }
 
@@ -1973,43 +1974,121 @@ img { display: block; max-width: 100%; }
 }
 
 .project-preview {
-  min-height: 245px;
+  min-height: 270px;
+  border-radius: 14px;
+  border-bottom: 0;
+  overflow: hidden;
 }
 
 .archive-preview-image {
   display: block;
   overflow: hidden;
-  background: #11111d;
+  border-radius: 14px;
+  background: #151426;
 }
 
 .archive-preview-image img {
   width: 100%;
-  height: 245px;
+  height: 270px;
   object-fit: cover;
   object-position: center top;
+  border-radius: 14px;
 }
 
 .project-tile-copy {
-  min-height: 190px;
-  padding: 21px;
+  min-height: 215px;
+  padding: 24px 6px 6px;
 }
 
 .project-tile-copy h3 {
-  margin-bottom: 9px;
-  font-size: clamp(1.1rem, 1.7vw, 1.55rem);
+  margin-bottom: 12px;
+  font-family: var(--mono) !important;
+  font-size: clamp(1.38rem, 2vw, 1.7rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+  color: #ffffff;
 }
 
 .project-tile-copy > p {
-  font-size: .66rem;
+  font-family: var(--mono);
+  font-size: clamp(0.95rem, 1.25vw, 1.08rem) !important;
+  line-height: 1.48 !important;
+  color: #b8bad0;
 }
 
 .project-tile-footer {
-  padding-top: 16px;
+  padding-top: 26px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.tech-icons {
+  display: flex;
+  align-items: center;
 }
 
 .tech-icons span {
-  width: 28px;
-  height: 28px;
+  width: 42px;
+  height: 42px;
+  margin-left: -8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: #0b0b13;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.48);
+  display: grid;
+  place-items: center;
+  position: relative;
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.tech-icons span:first-child {
+  margin-left: 0;
+}
+
+.tech-icons span:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 92, 151, 0.55);
+  z-index: 3;
+}
+
+.tech-icons span svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+}
+
+.project-tile-footer a,
+.project-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff5c97 !important;
+  font-family: var(--mono) !important;
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.project-action-link:hover {
+  color: #ff7aa8 !important;
+}
+
+.project-link-arrow {
+  width: 15px;
+  height: 15px;
+  fill: #ffffff !important;
+  flex-shrink: 0;
+  transition: transform 220ms ease;
+}
+
+.project-action-link:hover .project-link-arrow {
+  transform: translate(2px, -2px);
 }
 
 .experience-section {
@@ -6029,11 +6108,15 @@ h4 {
     margin: 0 !important;
     transform: translate(-50%, -50%) scale(0.38) !important; 
   }
-  .project-tile-copy { min-height: 0 !important; padding: 14px 16px !important; }
-  .project-tile-copy h3 { font-size: 0.95rem !important; margin-bottom: 6px !important; }
-  .project-tile-copy > p { font-size: 0.65rem !important; line-height: 1.5 !important; }
-  .project-tile-footer { padding-top: 12px !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; }
-  .tech-icons span { width: 24px !important; height: 24px !important; font-size: 0.35rem !important; }
+  .project-tile-copy { min-height: 0 !important; padding: 18px 8px 6px !important; }
+  .project-tile-copy h3 { font-size: 1.15rem !important; margin-bottom: 8px !important; }
+  .project-tile-copy > p { font-size: 0.82rem !important; line-height: 1.48 !important; }
+  .project-tile-footer { padding-top: 16px !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; }
+  .tech-icons span { width: 32px !important; height: 32px !important; margin-left: -6px !important; }
+  .tech-icons span:first-child { margin-left: 0 !important; }
+  .tech-icons span svg { width: 16px !important; height: 16px !important; }
+  .project-action-link { font-size: 0.92rem !important; gap: 7px !important; }
+  .project-link-arrow { width: 12px !important; height: 12px !important; }
 }
 
 /* ===== EXPERIENCE & AWARDS ===== */
@@ -6349,9 +6432,9 @@ h4 {
   .language-card, .stack-card { grid-column: span 3 !important; min-height: 280px !important; }
   .architect-card, .inside-card { grid-column: span 3 !important; min-height: 280px !important; }
   
-  .projects-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
-  .project-preview { min-height: 250px !important; }
-  .project-tile-copy { min-height: 200px !important; padding: 22px !important; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .project-preview, .archive-preview-image img { min-height: 255px !important; height: 255px !important; }
+  .project-tile-copy { min-height: 210px !important; padding: 22px 6px 6px !important; }
   
   .honors-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px !important; }
   .honor-card { min-height: 140px !important; padding: 20px 24px !important; grid-template-columns: 56px 1fr !important; }

@@ -75,7 +75,7 @@ transitionLinks.forEach((link) => {
       // Navigation still works if storage is unavailable.
     }
     transition?.classList.add("is-leaving");
-    const targetUrl = href.includes("?") ? href : `${href}?v=20261110v40`;
+    const targetUrl = href.includes("?") ? href : `${href}?v=20261110v41`;
     window.setTimeout(() => {
       window.location.href = targetUrl;
     }, 850);
