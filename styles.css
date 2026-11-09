@@ -4981,7 +4981,7 @@ h4 {
 }
 
 .hobby-card-math .hobby-media {
-  height: 195px !important;
+  height: 220px !important;
 }
 
 /* =========================================================
@@ -4994,8 +4994,8 @@ h4 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 195px;
-  padding: 0;
+  height: 220px;
+  padding: 2px 0 0;
   margin-top: 4px;
 }
 
@@ -5006,17 +5006,17 @@ h4 {
 }
 
 .book-fan-row-top {
-  margin-left: -18px;
+  margin-left: -8px;
 }
 
 .book-fan-row-bottom {
-  margin-left: 28px;
-  margin-top: -16px;
+  margin-left: 14px;
+  margin-top: -12px;
 }
 
 .book-fan-card {
   flex-shrink: 0;
-  margin-right: -16px;
+  margin-right: -14px;
   margin-top: 4px;
   padding: 4px;
   background: #181824;
@@ -5032,8 +5032,8 @@ h4 {
 
 .book-fan-card img {
   display: block;
-  width: 125px;
-  height: 125px;
+  width: 106px;
+  height: 106px;
   object-fit: cover;
   border-radius: 10px;
   pointer-events: none;
@@ -6251,9 +6251,9 @@ h4 {
   .hobby-card-books video { object-fit: cover !important; }
   
   /* Books fan */
-  .book-fan-stage { height: 140px !important; }
-  .book-fan-card img { width: 90px !important; height: 90px !important; }
-  .book-fan-veil { width: 35px !important; }
+  .book-fan-stage { height: 156px !important; }
+  .book-fan-card img { width: 76px !important; height: 76px !important; }
+  .book-fan-veil { width: 32px !important; }
   
   /* Polyglot / Dream of Learning 10+ Languages: compact card height + half planet visible */
   .hobby-card-polyglot { 
