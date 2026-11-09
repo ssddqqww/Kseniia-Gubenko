@@ -2763,9 +2763,9 @@ h4 {
   left: 50% !important;
   right: auto !important;
   transform: translateX(-50%) !important;
-  bottom: -160px !important;
-  width: 740px !important;
-  height: 740px !important;
+  bottom: -285px !important;
+  width: 580px !important;
+  height: 580px !important;
   pointer-events: none;
   filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
 }
@@ -5981,8 +5981,8 @@ h4 {
   .book-fan-veil { width: 35px !important; }
   
   /* Polyglot / Dream of London Sandwiches: show half planet */
-  .hobby-card-polyglot { min-height: 300px !important; }
-  .cobe-globe-wrap { width: 280px !important; height: 280px !important; right: -70px !important; bottom: -90px !important; }
+  .hobby-card-polyglot { min-height: 310px !important; }
+  .cobe-globe-wrap { width: 340px !important; height: 340px !important; left: 50% !important; right: auto !important; transform: translateX(-50%) !important; bottom: -168px !important; }
   
   /* Components of my life: heading left/smaller, cards smaller */
   .components-life-section { padding: 40px 0 28px !important; }
@@ -6045,7 +6045,7 @@ h4 {
   
   .hobbies-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .hobby-media { height: 260px !important; }
-  .cobe-globe-wrap { width: 380px !important; height: 380px !important; right: -50px !important; bottom: -60px !important; }
+  .cobe-globe-wrap { width: 420px !important; height: 420px !important; left: 50% !important; right: auto !important; transform: translateX(-50%) !important; bottom: -206px !important; }
   .components-card { width: 230px !important; height: 340px !important; }
   
   .contact-inner { padding: 0 32px !important; }
@@ -6061,4 +6061,20 @@ h4 {
   .contact-social-circles::before { display: none !important; }
   .contact-personal-cta { margin: 40px auto 0 !important; }
   .contact-cta-enlarged { width: auto !important; min-width: 320px !important; height: 52px !important; font-size: 1rem !important; }
+}
+
+/* ==========================================================================
+   DESKTOP vs MOBILE HERO LAYOUT SWITCHER
+   Desktop (>= 768px) shows restored original hero; Mobile (<= 767px) keeps mobile hero
+   ========================================================================== */
+@media (min-width: 768px) {
+  .hero-mobile-layout {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-desktop-layout {
+    display: none !important;
+  }
 }
