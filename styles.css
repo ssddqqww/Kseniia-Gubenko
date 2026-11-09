@@ -5042,11 +5042,55 @@ h4 {
   filter: none !important;
 }
 
-.book-fan-card:hover {
+.book-fan-card:hover,
+.book-fan-card.is-active {
   transform: rotate(0deg) scale(1.1) !important;
-  z-index: 50 !important;
+  z-index: 100 !important;
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Radnaabazar-style Book Hover Tooltip */
+.book-fan-tooltip {
+  position: fixed;
+  z-index: 20000;
+  pointer-events: none;
+  width: max-content;
+  max-width: 12rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 6px 12px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms ease;
+}
+
+.book-fan-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.book-fan-tooltip-title {
+  margin: 0 !important;
+  font-family: var(--mono) !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+.book-fan-tooltip-reason {
+  margin: 2px 0 0 !important;
+  font-family: var(--mono) !important;
+  font-size: 11px !important;
+  line-height: 1.375 !important;
+  font-weight: 400 !important;
+  color: #d4d4d4 !important;
 }
 
 /* fade veil on left & right edges */

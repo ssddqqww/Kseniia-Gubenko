@@ -286,6 +286,71 @@ const initCardScrollReveal = () => {
 
 initCardScrollReveal();
 
+// ─── Radnaabazar-style Book Fan Hover Tooltip ──────────────────────────────
+const initBookFanTooltips = () => {
+  const bookCards = document.querySelectorAll(".book-fan-card[data-book-title]");
+  if (!bookCards.length) return;
+
+  const tooltip = document.createElement("div");
+  tooltip.className = "book-fan-tooltip";
+  tooltip.setAttribute("aria-hidden", "true");
+  const titleEl = document.createElement("p");
+  titleEl.className = "book-fan-tooltip-title";
+  const reasonEl = document.createElement("p");
+  reasonEl.className = "book-fan-tooltip-reason";
+  tooltip.appendChild(titleEl);
+  tooltip.appendChild(reasonEl);
+  document.body.appendChild(tooltip);
+
+  const updatePosition = (x, y) => {
+    const clampedLeft = Math.max(8, Math.min(x + 14, window.innerWidth - 204));
+    const clampedTop = Math.max(8, Math.min(y + 14, window.innerHeight - 96));
+    tooltip.style.left = `${clampedLeft}px`;
+    tooltip.style.top = `${clampedTop}px`;
+  };
+
+  const showTooltip = (card, x, y) => {
+    const title = card.getAttribute("data-book-title");
+    const reason = card.getAttribute("data-book-reason");
+    if (!title) return;
+    titleEl.textContent = title;
+    reasonEl.textContent = reason || "";
+    updatePosition(x, y);
+    tooltip.classList.add("is-visible");
+  };
+
+  const hideTooltip = () => {
+    tooltip.classList.remove("is-visible");
+    bookCards.forEach((c) => c.classList.remove("is-active"));
+  };
+
+  bookCards.forEach((card) => {
+    card.addEventListener("mouseenter", (e) => {
+      showTooltip(card, e.clientX, e.clientY);
+    });
+    card.addEventListener("mousemove", (e) => {
+      updatePosition(e.clientX, e.clientY);
+    });
+    card.addEventListener("mouseleave", () => {
+      hideTooltip();
+    });
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+      bookCards.forEach((c) => c.classList.remove("is-active"));
+      card.classList.add("is-active");
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX || rect.left + rect.width / 2;
+      const y = e.clientY || rect.bottom;
+      showTooltip(card, x, y);
+    });
+  });
+
+  document.addEventListener("click", () => hideTooltip());
+  window.addEventListener("scroll", () => hideTooltip(), { passive: true });
+};
+
+initBookFanTooltips();
+
 // ─── Floating Music Player (Radnaabazar style) ──────────────────────────────
 const initMusicPlayer = () => {
   const player = document.getElementById("music-player");
