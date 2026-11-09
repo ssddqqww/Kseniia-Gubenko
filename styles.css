@@ -2763,9 +2763,9 @@ h4 {
   left: 50% !important;
   right: auto !important;
   transform: translateX(-50%) !important;
-  bottom: -285px !important;
-  width: 580px !important;
-  height: 580px !important;
+  bottom: -305px !important;
+  width: 680px !important;
+  height: 680px !important;
   pointer-events: none;
   filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
 }

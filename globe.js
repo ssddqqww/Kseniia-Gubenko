@@ -5,7 +5,7 @@ const canvas = document.getElementById("globe-canvas");
 if (canvas) {
   let phi = 0;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const size = 580; // Crisp resolution matching half-planet dome display
+  const size = 680; // Crisp resolution matching larger half-planet dome display
 
   try {
     const globe = createGlobe(canvas, {
