@@ -19,20 +19,21 @@ if (canvas) {
       mapSamples: 18000,
       mapBrightness: 6,
       baseColor: [0.85, 0.85, 0.9],     // Crisp bright white / silver dotted continents (like Radnaabazar)
-      markerColor: [0.1, 0.8, 1],       // Luminous cyan location markers
+      markerColor: [0.86, 0.34, 0.52],  // Website signature rose-pink (--wine-light: #db5785 / #d34d78)
+      markerElevation: 0,               // Flat markers directly on the sphere surface (not protruding)
       glowColor: [1, 1, 1],             // Pure white atmospheric glow
       markers: [
-        { location: [50.4501, 30.5234], size: 0.08 }, // Kyiv (Ukrainian)
-        { location: [48.8566, 2.3522],  size: 0.07 }, // Paris (French)
-        { location: [51.5074, -0.1278], size: 0.07 }, // London (English)
-        { location: [39.9042, 116.407], size: 0.08 }, // Beijing (Chinese)
-        { location: [35.6762, 139.650], size: 0.07 }  // Tokyo (Japanese)
+        { location: [50.4501, 30.5234], size: 0.055 }, // Ukraine — Ukrainian
+        { location: [55.7558, 37.6173], size: 0.055 }, // Russia — Russian
+        { location: [51.5074, -0.1278], size: 0.055 }, // UK — English
+        { location: [39.9042, 116.407], size: 0.055 }, // China — Chinese
+        { location: [48.8566, 2.3522],  size: 0.055 }  // France — French
       ]
     });
 
-    // Continuous smooth spinning loop around its axis
+    // Continuous smooth spinning loop around its axis (slightly faster)
     const animate = () => {
-      phi += 0.005;
+      phi += 0.0085;
       globe.update({ phi: phi });
       requestAnimationFrame(animate);
     };
