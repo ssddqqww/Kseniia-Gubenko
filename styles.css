@@ -4049,27 +4049,37 @@ h4 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* Horse Riding card spacing polish - lift video up, frame it, and leave breathing room at bottom */
+/* Horse Riding & Learning Languages cards: more compact height and tighter spacing above globe */
 .hobby-card-books,
 .hobby-card-polyglot {
-  min-height: 640px !important;
+  min-height: 520px !important;
+}
+
+.hobby-card-polyglot {
+  padding: 32px 36px 0 !important;
+}
+
+.hobby-card-polyglot .hobby-copy {
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .hobby-card-books {
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
-  padding: 42px 42px 36px !important;
+  padding: 32px 36px 28px !important;
 }
 
 .hobby-card-books .hobby-copy {
   min-height: 0 !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 18px !important;
   padding-bottom: 0 !important;
 }
 
 .hobby-card-books .hobby-media {
-  height: 380px !important;
+  height: 325px !important;
   border-radius: 20px !important;
   margin: 0 !important;
 }
@@ -6255,10 +6265,10 @@ h4 {
   .book-fan-card img { width: 76px !important; height: 76px !important; }
   .book-fan-veil { width: 32px !important; }
   
-  /* Polyglot / Dream of Learning 10+ Languages: compact card height + half planet visible */
+  /* Polyglot / Learning Languages: compact card height + half planet visible */
   .hobby-card-polyglot { 
-    min-height: 245px !important; 
-    height: 245px !important;
+    min-height: 295px !important; 
+    height: 295px !important;
     padding: 18px 14px 0 !important;
   }
   .cobe-globe-wrap { 
