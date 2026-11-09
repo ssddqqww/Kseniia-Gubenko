@@ -59,8 +59,8 @@ transitionLinks.forEach((link) => {
     const href = link.getAttribute("href");
     if (!href || href.startsWith("#")) return;
 
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    const targetPath = href.split("/").pop();
+    const currentPath = (window.location.pathname.split("/").pop() || "index.html").split("?")[0];
+    const targetPath = href.split("/").pop().split("?")[0];
     if (currentPath === targetPath) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -75,8 +75,9 @@ transitionLinks.forEach((link) => {
       // Navigation still works if storage is unavailable.
     }
     transition?.classList.add("is-leaving");
+    const targetUrl = href.includes("?") ? href : `${href}?v=20261110v32`;
     window.setTimeout(() => {
-      window.location.href = href;
+      window.location.href = targetUrl;
     }, 850);
   });
 });
