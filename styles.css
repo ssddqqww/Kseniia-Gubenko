@@ -4052,11 +4052,11 @@ h4 {
 /* Horse Riding & Learning Languages cards: more compact height and tighter spacing above globe */
 .hobby-card-books,
 .hobby-card-polyglot {
-  min-height: 520px !important;
+  min-height: 480px !important;
 }
 
 .hobby-card-polyglot {
-  padding: 32px 36px 0 !important;
+  padding: 28px 36px 0 !important;
 }
 
 .hobby-card-polyglot .hobby-copy {
@@ -4069,17 +4069,17 @@ h4 {
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
-  padding: 32px 36px 28px !important;
+  padding: 28px 36px 24px !important;
 }
 
 .hobby-card-books .hobby-copy {
   min-height: 0 !important;
-  margin-bottom: 18px !important;
+  margin-bottom: 16px !important;
   padding-bottom: 0 !important;
 }
 
 .hobby-card-books .hobby-media {
-  height: 325px !important;
+  height: 295px !important;
   border-radius: 20px !important;
   margin: 0 !important;
 }
