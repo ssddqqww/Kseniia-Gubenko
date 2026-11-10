@@ -1,16 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - iLanding Bootstrap Template</title>
+  <title>NeuroFlow</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/Testic.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="assets/folder_js_css/css/style_manager_chat.css?ts=a">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -23,10 +25,24 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="assets/folder_js_css/css/my.css">
+  <link rel="stylesheet" href="assets/folder_js_css/css/tyle_forum.css">
+  <link rel="stylesheet" href="assets/folder_js_css/css/style_topics.css">
+  <link rel="stylesheet" href="assets/folder_js_css/css/tyle_top_topics.css">
+  <link rel="stylesheet" href="assets/folder_js_css/css/news.css">
+  <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="assets/folder_js_css/css/test.css">
+  <!-- <link href="test/test.css" rel="stylesheet"> -->
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
+  <link href="assets/css/main.css?ts=a" rel="stylesheet">
+  <link rel="stylesheet" href="assets/folder_js_css/css/partners-for-change.css">
   <!-- =======================================================
   * Template Name: iLanding
   * Template URL: https://bootstrapmade.com/ilanding-bootstrap-landing-page-template/
@@ -44,180 +60,920 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">iLanding</h1>
+        <h1 class="sitename hover-underline">NeuroFlow</h1>
+        
       </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+<nav id="navmenu" class="navmenu">
+  <ul>
+    <li><a id="home_func" class="block_up_little_lit home_type" onclick="toggleBlocks(this.id)">Projects</a></li>
+    <li><a id="about_func" class="block_up_little_lit about_type" onclick="toggleBlocks(this.id)">About</a></li>
+    <li><a id="features_func" class="block_up_little_lit features_type" onclick="toggleBlocks(this.id)">Features</a></li>
+    <li><a id="top_func" class="block_up_little_lit top_type" onclick="toggleBlocks(this.id)">Top</a></li>
+    <li><a id="topics_container_func" class="block_up_little_lit chat_type" onclick="toggleBlocks(this.id)">Chat</a></li>
+    <li><a id="news_func" class="block_up_little_lit" href="news/"">News</a></li>
+    <li><a id="download_func" class="block_up_little_lit download_type" onclick="toggleBlocks(this.id)">Download</a></li>
+      <li><a href="p2p" class="pfc-nav-link ">P2P</a></li>
 
-      <a class="btn-getstarted" href="index.html#about">Login</a>
+  </ul>
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+      <div class="container_avatar_login">
+        <div class="profile-btn block_up_little_lit" onclick="toggleProfile()"></div>
+      <div class="profile-overlay" id="profile-overlay"></div>
+    
+      <div class="profile-modal" id="profile-modal">
+        <div class="profile-modal-header">
+            <button class="profile-close-btn" onclick="toggleProfile()">✕</button>
+        </div>
+        <div class="profile-avatar-container">
+            <img src="assets/folder_js_css/assets/img/cart.jpg" alt="" class="profile-avatar" id="profile-avatar" onclick="document.getElementById('profile-avatarInput').click()">
+        </div>
+        <input type="file" id="profile-avatarInput" accept="image/*" onchange="changeAvatar(event)">
+        <div class="profile-nickname" id="profile-nickname" onclick="editNickname()">User123</div>
+        <div class="profile-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7d2d4c2d5969594e7c2dfc6cad7cbc289c4c8ca">[email&#160;protected]</a></div>
+        <div class="profile-info-item">Status: <span class="mint_grean">online</span></div>
+        <div class="profile-info-item">Registration date: 15.03.2023</div>
+      </div>
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleProfile() {
+          const modal = document.getElementById('profile-modal');
+          const overlay = document.getElementById('profile-overlay');
+          
+          const nicknameInput = document.querySelector('.profile-nickname-input');
+          if (nicknameInput) {
+              const nicknameValue = nicknameInput.value.trim();
+              if (!nicknameValue) {
+                  return;
+              }
+              const newNicknameDiv = document.createElement('div');
+              newNicknameDiv.textContent = nicknameValue;
+              newNicknameDiv.className = 'profile-nickname';
+              newNicknameDiv.id = 'profile-nickname';
+              newNicknameDiv.onclick = editNickname;
+              nicknameInput.replaceWith(newNicknameDiv);
+          }
+  
+          modal.classList.toggle('active');
+          overlay.classList.toggle('active');
+      }
+  
+        function editNickname() {
+          const nicknameDiv = document.getElementById('profile-nickname');
+          const currentNickname = nicknameDiv.textContent;
+  
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = currentNickname;
+          input.className = 'profile-nickname-input';
+          input.maxLength = 18;
+          
+          nicknameDiv.replaceWith(input);
+          input.focus();
+  
+          input.addEventListener('keypress', function(e) {
+              if (e.key === 'Enter') {
+                  const newNickname = input.value.trim();
+                  if (newNickname) {
+                      const newNicknameDiv = document.createElement('div');
+                      newNicknameDiv.textContent = newNickname;
+                      newNicknameDiv.className = 'profile-nickname';
+                      newNicknameDiv.id = 'profile-nickname';
+                      newNicknameDiv.onclick = editNickname;
+                      input.replaceWith(newNicknameDiv);
+                  }
+              }
+          });
+          
+      }
+  
+        function changeAvatar(event) {
+          const file = event.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              const avatar = document.getElementById('profile-avatar');
+              
+              reader.onload = function(e) {
+                  avatar.src = e.target.result;
+                  const avatar_main = document.querySelector('.profile-btn');
+                  avatar_main.style.background = `url(${e.target.result})`;
+                  avatar_main.style.backgroundSize = '40px 40px';
+              };
+              reader.readAsDataURL(file);
+          }
+      }
+  
+        document.getElementById('profile-overlay').addEventListener('click', function() {
+            toggleProfile();
+        });
+  
+        document.getElementById('profile-modal').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+      </script>
+
+      <link href="assets/folder_js_css/css/my_button_download.css" rel="stylesheet">
+      <div class="login_container block_up_little_lit" onclick="handleClick(this)">
+        <span class="login_text">LOGIN</span>
+        <svg class="login_fingerprint login_fingerprint-base" xmlns="http://www.w3.org/2000/svg" width="41.66" height="41.66" viewBox="0 0 100 100">
+          <g class="login_fingerprint-out" fill="none" stroke-width="2" stroke-linecap="round">
+            <path class="login_odd" d="m 25.117139,57.142857 c 0,0 -1.968558,-7.660465 -0.643619,-13.149003 1.324939,-5.488538 4.659682,-8.994751 4.659682,-8.994751"></path>
+            <path class="login_odd" d="m 31.925369,31.477584 c 0,0 2.153609,-2.934998 9.074971,-5.105078 6.921362,-2.17008 11.799844,-0.618718 11.799844,-0.618718"></path>
+            <path class="login_odd" d="m 57.131213,26.814448 c 0,0 5.127709,1.731228 9.899495,7.513009 4.771786,5.781781 4.772971,12.109204 4.772971,12.109204"></path>
+            <path class="login_odd" d="m 72.334009,50.76769 0.09597,2.298098 -0.09597,2.386485"></path>
+            <path class="login_even" d="m 27.849282,62.75 c 0,0 1.286086,-1.279223 1.25,-4.25 -0.03609,-2.970777 -1.606117,-7.675266 -0.625,-12.75 0.981117,-5.074734 4.5,-9.5 4.5,-9.5"></path>
+            <path class="login_even" d="m 36.224282,33.625 c 0,0 8.821171,-7.174484 19.3125,-2.8125 10.491329,4.361984 11.870558,14.952665 11.870558,14.952665"></path>
+            <path class="login_even" d="m 68.349282,49.75 c 0,0 0.500124,3.82939 0.5625,5.8125 0.06238,1.98311 -0.1875,5.9375 -0.1875,5.9375"></path>
+            <path class="login_odd" d="m 31.099282,65.625 c 0,0 1.764703,-4.224042 2,-7.375 0.235297,-3.150958 -1.943873,-9.276886 0.426777,-15.441942 2.370649,-6.165056 8.073223,-7.933058 8.073223,-7.933058"></path>
+            <path class="login_odd" d="m 45.849282,33.625 c 0,0 12.805566,-1.968622 17,9.9375 4.194434,11.906122 1.125,24.0625 1.125,24.0625"></path>
+            <path class="login_even" d="m 59.099282,70.25 c 0,0 0.870577,-2.956221 1.1875,-4.5625 0.316923,-1.606279 0.5625,-5.0625 0.5625,-5.0625"></path>
+            <path class="login_even" d="m 60.901059,56.286612 c 0,0 0.903689,-9.415996 -3.801777,-14.849112 -3.03125,-3.5 -7.329245,-4.723939 -11.867187,-3.8125 -5.523438,1.109375 -7.570313,5.75 -7.570313,5.75"></path>
+            <path class="login_even" d="m 34.072577,68.846248 c 0,0 2.274231,-4.165782 2.839205,-9.033748 0.443558,-3.821814 -0.49394,-5.649939 -0.714206,-8.05386 -0.220265,-2.403922 0.21421,-4.63364 0.21421,-4.63364"></path>
+            <path class="login_odd" d="m 37.774165,70.831845 c 0,0 2.692139,-6.147592 3.223034,-11.251208 0.530895,-5.103616 -2.18372,-7.95562 -0.153491,-13.647655 2.030229,-5.692035 8.108442,-4.538898 8.108442,-4.538898"></path>
+            <path class="login_odd" d="m 54.391174,71.715729 c 0,0 2.359472,-5.427681 2.519068,-16.175068 0.159595,-10.747388 -4.375223,-12.993087 -4.375223,-12.993087"></path>
+            <path class="login_even" d="m 49.474282,73.625 c 0,0 3.730297,-8.451831 3.577665,-16.493718 -0.152632,-8.041887 -0.364805,-11.869326 -4.765165,-11.756282 -4.400364,0.113044 -3.875,4.875 -3.875,4.875"></path>
+            <path class="login_even" d="m 41.132922,72.334447 c 0,0 2.49775,-5.267079 3.181981,-8.883029 0.68423,-3.61595 0.353553,-9.413359 0.353553,-9.413359"></path>
+            <path class="login_odd" d="m 45.161782,73.75 c 0,0 1.534894,-3.679847 2.40625,-6.53125 0.871356,-2.851403 1.28125,-7.15625 1.28125,-7.15625"></path>
+            <path class="login_odd" d="m 48.801947,56.125 c 0,0 0.234502,-1.809418 0.109835,-3.375 -0.124667,-1.565582 -0.5625,-3.1875 -0.5625,-3.1875"></path>
+          </g>
+        </svg>
+        <svg class="login_fingerprint login_fingerprint-active" xmlns="http://www.w3.org/2000/svg" width="41.66" height="41.66" viewBox="0 0 100 100">
+          <g class="login_fingerprint-out" fill="none" stroke-width="2" stroke-linecap="round">
+            <path class="login_odd" d="m 25.117139,57.142857 c 0,0 -1.968558,-7.660465 -0.643619,-13.149003 1.324939,-5.488538 4.659682,-8.994751 4.659682,-8.994751"></path>
+            <path class="login_odd" d="m 31.925369,31.477584 c 0,0 2.153609,-2.934998 9.074971,-5.105078 6.921362,-2.17008 11.799844,-0.618718 11.799844,-0.618718"></path>
+            <path class="login_odd" d="m 57.131213,26.814448 c 0,0 5.127709,1.731228 9.899495,7.513009 4.771786,5.781781 4.772971,12.109204 4.772971,12.109204"></path>
+            <path class="login_odd" d="m 72.334009,50.76769 0.09597,2.298098 -0.09597,2.386485"></path>
+            <path class="login_even" d="m 27.849282,62.75 c 0,0 1.286086,-1.279223 1.25,-4.25 -0.03609,-2.970777 -1.606117,-7.675266 -0.625,-12.75 0.981117,-5.074734 4.5,-9.5 4.5,-9.5"></path>
+            <path class="login_even" d="m 36.224282,33.625 c 0,0 8.821171,-7.174484 19.3125,-2.8125 10.491329,4.361984 11.870558,14.952665 11.870558,14.952665"></path>
+            <path class="login_even" d="m 68.349282,49.75 c 0,0 0.500124,3.82939 0.5625,5.8125 0.06238,1.98311 -0.1875,5.9375 -0.1875,5.9375"></path>
+            <path class="login_odd" d="m 31.099282,65.625 c 0,0 1.764703,-4.224042 2,-7.375 0.235297,-3.150958 -1.943873,-9.276886 0.426777,-15.441942 2.370649,-6.165056 8.073223,-7.933058 8.073223,-7.933058"></path>
+            <path class="login_odd" d="m 45.849282,33.625 c 0,0 12.805566,-1.968622 17,9.9375 4.194434,11.906122 1.125,24.0625 1.125,24.0625"></path>
+            <path class="login_even" d="m 59.099282,70.25 c 0,0 0.870577,-2.956221 1.1875,-4.5625 0.316923,-1.606279 0.5625,-5.0625 0.5625,-5.0625"></path>
+            <path class="login_even" d="m 60.901059,56.286612 c 0,0 0.903689,-9.415996 -3.801777,-14.849112 -3.03125,-3.5 -7.329245,-4.723939 -11.867187,-3.8125 -5.523438,1.109375 -7.570313,5.75 -7.570313,5.75"></path>
+            <path class="login_even" d="m 34.072577,68.846248 c 0,0 2.274231,-4.165782 2.839205,-9.033748 0.443558,-3.821814 -0.49394,-5.649939 -0.714206,-8.05386 -0.220265,-2.403922 0.21421,-4.63364 0.21421,-4.63364"></path>
+            <path class="login_odd" d="m 37.774165,70.831845 c 0,0 2.692139,-6.147592 3.223034,-11.251208 0.530895,-5.103616 -2.18372,-7.95562 -0.153491,-13.647655 2.030229,-5.692035 8.108442,-4.538898 8.108442,-4.538898"></path>
+            <path class="login_odd" d="m 54.391174,71.715729 c 0,0 2.359472,-5.427681 2.519068,-16.175068 0.159595,-10.747388 -4.375223,-12.993087 -4.375223,-12.993087"></path>
+            <path class="login_even" d="m 49.474282,73.625 c 0,0 3.730297,-8.451831 3.577665,-16.493718 -0.152632,-8.041887 -0.364805,-11.869326 -4.765165,-11.756282 -4.400364,0.113044 -3.875,4.875 -3.875,4.875"></path>
+            <path class="login_even" d="m 41.132922,72.334447 c 0,0 2.49775,-5.267079 3.181981,-8.883029 0.68423,-3.61595 0.353553,-9.413359 0.353553,-9.413359"></path>
+            <path class="login_odd" d="m 45.161782,73.75 c 0,0 1.534894,-3.679847 2.40625,-6.53125 0.871356,-2.851403 1.28125,-7.15625 1.28125,-7.15625"></path>
+            <path class="login_odd" d="m 48.801947,56.125 c 0,0 0.234502,-1.809418 0.109835,-3.375 -0.124667,-1.565582 -0.5625,-3.1875 -0.5625,-3.1875"></path>
+          </g>
+        </svg>
+        <svg class="login_ok" xmlns="http://www.w3.org/2000/svg" width="41.66" height="41.66" viewBox="0 0 100 100">
+          <path d="M34.912 50.75l10.89 10.125L67 36.75" fill="none" stroke="#fff" stroke-width="6"></path>
+        </svg>
+      </div>
+      
+      <script>
+        const container = document.querySelector('.login_container');
+        
+        function handleClick(element) {
+          element.classList.toggle('active');
+          setTimeout(() => {
+            window.location.href = 'login/login.html';
+          }, 5000);
+        }
+        
+        container.addEventListener('animationend', () => {
+          container.classList.remove('active');
+        });
+      </script>
+      </div>
 
     </div>
   </header>
 
   <main class="main">
+   <style>
+        /* Стили для главной страницы */
+    .main-neuroflow-reset {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    /* Стили для главной страницы */
+    .main-neuroflow-body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f9f8f6;
+      font-family: 'Inter', 'Arial', sans-serif;
+      color: #1f2937;
+    }
+
+    /* Контейнер секции */
+    .main-neuroflow-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .main-neuroflow-section {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+
+    /* Flex для текста и картинки */
+    .main-neuroflow-flex-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Стили для текста */
+    .main-neuroflow-text-content {
+      flex: 1;
+    }
+
+    .main-neuroflow-text-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    .main-neuroflow-text-content h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: #007bff;
+    }
+
+    .main-neuroflow-text-content ul {
+      list-style: none;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #4b5563;
+    }
+
+    .main-neuroflow-text-content ul li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .main-neuroflow-text-content ul li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #007bff;
+    }
+
+    /* Кнопки */
+    .main-neuroflow-buttons-container {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .main-neuroflow-cta-button, .main-neuroflow-get-started-button {
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      min-width: 200px;
+    }
+
+    .main-neuroflow-cta-button {
+      background: #007bff;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    .main-neuroflow-get-started-button {
+      background: #2ecc71;
+      color: white;
+      box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    }
+
+    .main-neuroflow-cta-button:hover, .main-neuroflow-get-started-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Картинка */
+    .main-neuroflow-image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .main-neuroflow-image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transform: none !important;
+    }
+
+    /* Адаптивность */
+    @media (min-width: 768px) {
+      .main-neuroflow-flex-container {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .main-neuroflow-text-content {
+        padding-right: 2rem;
+      }
+
+      .main-neuroflow-text-content h1 {
+        font-size: 3.5rem;
+      }
+
+      .main-neuroflow-text-content h2 {
+        font-size: 1.75rem;
+      }
+    }
+
+    .main-neuroflow-color {
+      color: #f9f8f6;  
+    }
+  </style>
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
-              <div class="company-badge mb-4">
-                <i class="bi bi-gear-fill me-2"></i>
-                Working for your success
-              </div>
-
-              <h1 class="mb-4">
-                Maecenas Vitae <br>
-                Consectetur Led <br>
-                <span class="accent-text">Vestibulum Ante</span>
-              </h1>
-
-              <p class="mb-4 mb-md-5">
-                Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.
-                Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
-              </p>
-
-              <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
-                  <i class="bi bi-play-circle me-1"></i>
-                  Play Video
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-              <img src="assets/img/illustration-1.webp" alt="Hero Image" class="img-fluid">
-
-              <div class="customers-badge">
-                <div class="customer-avatars">
-                  <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
-                  <img src="assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
-                  <img src="assets/img/avatar-3.webp" alt="Customer 3" class="avatar">
-                  <img src="assets/img/avatar-4.webp" alt="Customer 4" class="avatar">
-                  <img src="assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
-                  <span class="avatar more">12+</span>
-                </div>
-                <p class="mb-0 mt-2">12,000+ lorem ipsum dolor sit amet consectetur adipiscing elit</p>
-              </div>
-            </div>
+   <div class="main-neuroflow-container">
+    <section id="hero" class="main-neuroflow-section hero section block_all_h">
+         <div class="main-neuroflow-flex-container main-neuroflow-color">
+        <div class="main-neuroflow-text-content">
+          <h1 class="opacity-0" id="main-neuroflow-header">Welcome to NeuroFlow</h1>
+          <h2 class="opacity-0" id="main-neuroflow-subheader">Your Platform for Innovation</h2>
+          <ul class="opacity-0" id="main-neuroflow-features">
+            <li>Create and share your own apps with ease.</li>
+            <li>Connect with creators and collaborate in real-time.</li>
+            <li>Stay updated with the latest tech news.</li>
+            <li>Explore a vibrant community of innovators.</li>
+          </ul>
+          <div class="main-neuroflow-buttons-container">
+            <a href="projects/top_projects.html" class="main-neuroflow-cta-button" id="main-neuroflow-cta">Join the Flow</a>
+            <a href="aplication/" class="main-neuroflow-get-started-button" id="main-neuroflow-get-started">Get Started</a>
           </div>
         </div>
-
-        <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
-          <div class="col-lg-3 col-md-6">
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="bi bi-trophy"></i>
-              </div>
-              <div class="stat-content">
-                <h4>3x Won Awards</h4>
-                <p class="mb-0">Vestibulum ante ipsum</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="bi bi-briefcase"></i>
-              </div>
-              <div class="stat-content">
-                <h4>6.5k Faucibus</h4>
-                <p class="mb-0">Nullam quis ante</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="bi bi-graph-up"></i>
-              </div>
-              <div class="stat-content">
-                <h4>80k Mauris</h4>
-                <p class="mb-0">Etiam sit amet orci</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="bi bi-award"></i>
-              </div>
-              <div class="stat-content">
-                <h4>6x Phasellus</h4>
-                <p class="mb-0">Vestibulum ante ipsum</p>
-              </div>
-            </div>
-          </div>
+        <div class="main-neuroflow-image-container">
+          <img src="assets/img/ggg.png" 
+               alt="NeuroFlow Digital Interface" 
+               class="opacity-0" 
+               id="main-neuroflow-image"
+               onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23f0f0f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'24\' fill=\'%23999\'%3EImage not found%3C/text%3E%3C/svg%3E';">
         </div>
-
       </div>
+      <script>
+    // Функция для безопасной инициализации анимаций
+    function initializeAnimations() {
+      try {
+        if (typeof gsap === 'undefined') {
+          console.warn('GSAP не загрузился. Анимации будут отключены.');
+          // Показываем элементы без анимации
+          document.querySelectorAll('.opacity-0').forEach(el => {
+            el.classList.remove('opacity-0');
+          });
+          return;
+        }
 
-    </section><!-- /Hero Section -->
+        // GSAP анимации с проверкой существования элементов
+        const elements = {
+          header: document.querySelector("#main-neuroflow-header"),
+          subheader: document.querySelector("#main-neuroflow-subheader"),
+          features: document.querySelector("#main-neuroflow-features"),
+          buttons: document.querySelector(".main-neuroflow-buttons-container"),
+          image: document.querySelector("#main-neuroflow-image")
+        };
+
+        if (elements.header) {
+          gsap.from(elements.header, { duration: 1, y: 50, opacity: 0, ease: "power2.out" });
+        }
+        if (elements.subheader) {
+          gsap.from(elements.subheader, { duration: 1, y: 40, opacity: 0, delay: 0.2, ease: "power2.out" });
+        }
+        if (elements.features) {
+          gsap.from("#main-neuroflow-features li", { duration: 0.8, x: -30, opacity: 0, delay: 0.4, stagger: 0.15, ease: "power2.out" });
+        }
+        if (elements.buttons) {
+          gsap.from(elements.buttons, { duration: 1, y: 30, opacity: 0, delay: 0.8, ease: "power2.out" });
+        }
+        if (elements.image) {
+          gsap.from(elements.image, { duration: 1.2, scale: 0.9, opacity: 0, delay: 1, ease: "power2.out" });
+        }
+      } catch (error) {
+        console.error('Ошибка при инициализации анимаций:', error);
+      }
+    }
+
+    // Функция для безопасной инициализации параллакса
+    function initializeParallax() {
+      try {
+        const img = document.querySelector("#main-neuroflow-image");
+        if (!img) return;
+
+        document.addEventListener("mousemove", (e) => {
+          const x = (window.innerWidth / 2 - e.clientX) / 100;
+          const y = (window.innerHeight / 2 - e.clientY) / 100;
+          img.style.transform = `translate(${x}px, ${y}px)`;
+        });
+      } catch (error) {
+        console.error('Ошибка при инициализации параллакса:', error);
+      }
+    }
+
+    // Инициализация после загрузки страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAnimations();
+      initializeParallax();
+    });
+  </script>      
+      </section></div><!-- /Hero Section -->
+    <style>
+    .home-container {
+      --home-primary: #007bff;
+      --home-secondary: #27ae60;
+      --home-text-primary: #1a1a1a;
+      --home-text-secondary: #4a4a4a;
+      --home-background: #ffffff;
+      --home-shadow: rgba(0, 123, 255, 0.1);
+      
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      background: var(--home-background);
+      color: var(--home-text-primary);
+    }
+
+    body {
+      background: #ffffff;
+    }
+
+    .home-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      width: 100%;
+      position: relative;
+    }
+
+    .home-text {
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    .home-text__title {
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--home-primary), var(--home-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      max-width: 800px;
+    }
+
+    .home-text__subtitle {
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--home-text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .home-text__paragraph {
+      font-size: 1.25rem;
+      color: var(--home-text-secondary);
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 2rem;
+      line-height: 1.6;
+    }
+
+    .home-text__paragraph::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      background: var(--home-primary);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    .home-image {
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+      margin: 0;
+    }
+
+    .home-image__img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px var(--home-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .home-image::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: 20px;
+      bottom: 20px;
+      border: 2px solid var(--home-primary);
+      border-radius: 24px;
+      z-index: -1;
+    }
+
+    .home-image::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: -20px;
+      bottom: -20px;
+      border: 2px solid var(--home-secondary);
+      border-radius: 24px;
+      z-index: -1;
+    }
+
+    .home-shape {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(135deg, var(--home-primary), var(--home-secondary));
+      opacity: 0.05;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .home-shape--top {
+      top: -200px;
+      right: -200px;
+    }
+
+    .home-shape--bottom {
+      bottom: -200px;
+      left: -200px;
+      width: 400px;
+      height: 400px;
+    }
+
+    @media (min-width: 1024px) {
+      .home-flex {
+        flex-direction: row;
+        align-items: center;
+        gap: 6rem;
+      }
+
+      .home-image {
+        order: -1;
+        flex: 1.2;
+      }
+
+      .home-text {
+        flex: 1;
+      }
+
+      .home-text__title {
+        font-size: 5rem;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .home-container {
+        padding: 1rem;
+      }
+
+      .home-text__title {
+        font-size: 3rem;
+      }
+
+      .home-text__subtitle {
+        font-size: 1.75rem;
+      }
+
+      .home-text__paragraph {
+        font-size: 1.125rem;
+      }
+
+      .home-shape {
+        display: none;
+      }
+    }
+  </style>
+    <!-- Features Section -->
+    <section id="features" class="home-container features section block_all_h">
+       <div class="home-flex">
+      <div class="home-text">
+        <h1 class="home-text__title">Welcome to Our Platform</h1>
+        <h2 class="home-text__subtitle">A Space for Change</h2>
+        <p class="home-text__paragraph">
+          Our website is a space where users can create changes. Here, they can initiate their own project: from medical and cultural heritage to engineering, choosing their status and the main goal with which the project was initiated.
+        </p>
+        <p class="home-text__paragraph">
+          All such features can be seen on the interactive map, where each individual who created their own project markets the country. It gives an opportunity to see initiatives from every corner of the world.
+        </p>
+        <p class="home-text__paragraph">
+          Besides, our website allows users to have a live chat, where everyone can discuss various topics, find like-minded people, and add their own topic for discussion.
+        </p>
+        <p class="home-text__paragraph">
+          Our platform includes innovations, creativity, and actions for changing our future!
+        </p>
+      </div>
+      <div class="home-image">
+        <img src="assets/img/world.png" alt="Collaborative Platform Interface" class="home-image__img">
+      </div>
+    </div>
+    </section><!-- /Features Section -->
+
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <style>
+         .about-neuroflow-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        .about-neuroflow-text--heading {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .about-neuroflow-text--subheading {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .about-neuroflow-text--body {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        .about-neuroflow-text--highlight {
+            color: #162f4a;
+            font-weight: 600;
+        }
+
+        .about-neuroflow-container {
+            width: 80%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 80%;
+            max-height: 850px;
+            margin-top: 20px;
+        }
+
+        .about-neuroflow-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .about-neuroflow-about {
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .about-neuroflow-title {
+            text-align: left;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aboutNeuroflowFadeIn 0.8s ease forwards;
+        }
+
+        .about-neuroflow-title__heading {
+            background: linear-gradient(135deg, #1f2937 0%, #1f2937 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .about-neuroflow-title__heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #007bff 0%, #007bff 100%);
+            border-radius: 2px;
+        }
+
+        .about-neuroflow-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 48px;
+            align-items: start;
+            margin-bottom: 64px;
+        }
+
+        .about-neuroflow-description {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aboutNeuroflowFadeIn 0.8s ease forwards 0.2s;
+        }
+
+        .about-neuroflow-photo {
+            height: 100%;
+            min-height: 200px;
+            max-height: 400px;
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aboutNeuroflowFadeIn 0.8s ease forwards 0.3s;
+            transition: all 0.3s ease;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-neuroflow-photo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-neuroflow-features {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aboutNeuroflowFadeIn 0.8s ease forwards 0.4s;
+        }
+
+        .about-neuroflow-features__title {
+            background: linear-gradient(135deg, #007bff 0%, #007bff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 32px;
+        }
+
+        .about-neuroflow-features__list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .about-neuroflow-feature {
+            position: relative;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aboutNeuroflowFadeIn 0.8s ease forwards;
+            border: 1px solid #e2e8f0;
+        }
+
+        .about-neuroflow-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #2ecc71 0%, #2ecc71 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 2px 0 0 2px;
+        }
+
+        .about-neuroflow-feature:hover {
+            background: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-neuroflow-feature:hover::before {
+            opacity: 1;
+        }
+
+        .about-neuroflow-feature:nth-child(1) { animation-delay: 0.6s; }
+        .about-neuroflow-feature:nth-child(2) { animation-delay: 0.8s; }
+        .about-neuroflow-feature:nth-child(3) { animation-delay: 1s; }
+        .about-neuroflow-feature:nth-child(4) { animation-delay: 1.2s; }
+
+        @keyframes aboutNeuroflowFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .about-neuroflow-wrapper {
+                padding: 0 40px;
+            }
+
+            .about-neuroflow-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .about-neuroflow-photo {
+                position: relative;
+                top: 0;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-neuroflow-wrapper {
+                padding: 0 24px;
+            }
+
+            .about-neuroflow-about {
+                margin: 40px auto;
+            }
+
+            .about-neuroflow-text--heading {
+                font-size: 2.5rem;
+            }
+            
+            .about-neuroflow-features__list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<!--  <div class="about-neuroflow-container"> -->
+    <section id="about" class="about-neuroflow-about about section block_all_h hidden_all_h">
+        <div class="about-neuroflow-title">
+                <h1 class="about-neuroflow-text--heading about-neuroflow-title__heading">Neuro Flow</h1>
+            </div>
+            <div class="about-neuroflow-content">
+                <div class="about-neuroflow-description">
+                    <p class="about-neuroflow-text--body">We are a tight-knit squad of young innovators where everyone brings unique value: <span class="about-neuroflow-text--highlight"><b>Ivan</b></span>, our 17-year-old leader, combines technical curiosity with a natural talent for team coordination; <span class="about-neuroflow-text--highlight"><b>Kyrylo</b></span>, the 16-year-old coding prodigy, brings complex tech solutions to life through web development and neural networks; <span class="about-neuroflow-text--highlight"><b>Kseniia</b></span>, our 15-year-old creative designer, transforms advanced technologies into elegant and user-friendly experiences.</p>
+                </div>
+                <div class="about-neuroflow-photo">
+                    <img src="assets/img/team.png" alt="Neuro Flow Team" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+            <div class="about-neuroflow-features">
+                <h2 class="about-neuroflow-text--subheading about-neuroflow-features__title">Why Choose Us?</h2>
+                <ul class="about-neuroflow-features__list">
+                    <li class="about-neuroflow-feature about-neuroflow-text--body">Perfect blend of technical and creative skills</li>
+                    <li class="about-neuroflow-feature about-neuroflow-text--body">Deep expertise in cutting-edge technologies</li>
+                    <li class="about-neuroflow-feature about-neuroflow-text--body">Commitment to excellence in every project</li>
+                    <li class="about-neuroflow-feature about-neuroflow-text--body">Seamless teamwork and synergy</li>
+                </ul>
+            </div>
+ <!--      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4 align-items-center justify-content-between">
 
           <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
             <span class="about-meta">MORE ABOUT US</span>
-            <h2 class="about-title">Voluptas enim suscipit temporibus</h2>
-            <p class="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <h2 class="about-title">Building the Future of Technology</h2>
+            <p class="about-description">We are a team of passionate developers driven by innovation and the power of technology. Our mission is to create cutting-edge solutions that solve real-world problems and enhance the digital experience.</p>
 
             <div class="row feature-list-wrapper">
               <div class="col-md-6">
                 <ul class="feature-list">
-                  <li><i class="bi bi-check-circle-fill"></i> Lorem ipsum dolor sit amet</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Consectetur adipiscing elit</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Sed do eiusmod tempor</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Smart & impactful solutions</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Breaking boundaries & innovating</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Creativity & precision</li>
                 </ul>
               </div>
               <div class="col-md-6">
                 <ul class="feature-list">
-                  <li><i class="bi bi-check-circle-fill"></i> Incididunt ut labore et</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Dolore magna aliqua</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ut enim ad minim veniam</li>
+                  <li><i class="bi bi-check-circle-fill"></i> User-focused technology</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Cutting-edge development</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Future-driven mindset</li>
                 </ul>
               </div>
             </div>
 
             <div class="info-wrapper">
-              <div class="row gy-4">
+               <div class="row gy-4">
                 <div class="col-lg-5">
                   <div class="profile d-flex align-items-center gap-3">
                     <img src="assets/img/avatar-1.webp" alt="CEO Profile" class="profile-image">
@@ -236,8 +992,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>             </div>
           </div>
 
           <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
@@ -249,900 +1004,463 @@
               <div class="experience-badge floating">
                 <h3>15+ <span>Years</span></h3>
                 <p>Of experience in business service</p>
-              </div>
+              </div> 
             </div>
           </div>
         </div>
 
       </div>
-
+     -->
     </section><!-- /About Section -->
+    <!-- </div> -->
 
-    <!-- Features Section -->
-    <section id="features" class="features section">
+    <style>
+    .uiblock-section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f2f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+    }
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Features</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+    .uiblock-container {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 1475px;
+      width: 90%;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: uiblock-fadeIn 1s ease-out;
+      margin-left: 6%;
+      margin-right: 20px;
+      box-sizing: border-box; /* Добавлено для точного расчёта ширины */
+    }
 
-      <div class="container">
+    .uiblock-btn {
+      display: inline-block;
+      padding: 8px 12px;
+      font-size: 14px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #2ecc71 40%, #27ae60 40%, #2ecc71 60%);
+      background-size: 200% 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: uiblock-btnAppear 1.2s ease-out, uiblock-gradientFlow 3s ease-in-out infinite;
+      text-transform: uppercase;
+      width: 120px;
+      margin: 0 auto;
+    }
 
-        <div class="d-flex justify-content-center">
+    .uiblock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+    }
 
-          <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+    .uiblock-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(46, 204, 113, 0.2);
+    }
 
-            <li class="nav-item">
-              <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-                <h4>Modisit</h4>
-              </a>
-            </li><!-- End tab nav item -->
+    .uiblock-title {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 24px;
+      font-weight: 500;
+      animation: uiblock-slideIn 1s ease-out;
+    }
 
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-                <h4>Praesenti</h4>
-              </a><!-- End tab nav item -->
+    /* Анимации */
+    @keyframes uiblock-fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-                <h4>Explica</h4>
-              </a>
-            </li><!-- End tab nav item -->
+    @keyframes uiblock-slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-          </ul>
+    @keyframes uiblock-btnAppear {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-        </div>
+    @keyframes uiblock-gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
 
-        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="tab-pane fade active show" id="features-tab-1">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Voluptatem dignissimos provident</h3>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-illustration-1.webp" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End tab content item -->
-
-          <div class="tab-pane fade" id="features-tab-2">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Neque exercitationem debitis</h3>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-illustration-2.webp" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End tab content item -->
-
-          <div class="tab-pane fade" id="features-tab-3">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Voluptatibus commodi accusamu</h3>
-                <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                </ul>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-illustration-3.webp" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End tab content item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Features Section -->
-
-    <!-- Features Cards Section -->
-    <section id="features-cards" class="features-cards section">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="feature-box orange">
-              <i class="bi bi-award"></i>
-              <h4>Corporis voluptates</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-          </div><!-- End Feature Borx-->
-
-          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="feature-box blue">
-              <i class="bi bi-patch-check"></i>
-              <h4>Explicabo consectetur</h4>
-              <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
-            </div>
-          </div><!-- End Feature Borx-->
-
-          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="feature-box green">
-              <i class="bi bi-sunrise"></i>
-              <h4>Ullamco laboris</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-          </div><!-- End Feature Borx-->
-
-          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="feature-box red">
-              <i class="bi bi-shield-check"></i>
-              <h4>Labore consequatur</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-          </div><!-- End Feature Borx-->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Features Cards Section -->
-
-    <!-- Features 2 Section -->
-    <section id="features-2" class="features-2 section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center">
-
-          <div class="col-lg-4">
-
-            <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
-              <div class="d-flex align-items-center justify-content-end gap-4">
-                <div class="feature-content">
-                  <h3>Use On Any Device</h3>
-                  <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia.</p>
-                </div>
-                <div class="feature-icon flex-shrink-0">
-                  <i class="bi bi-display"></i>
-                </div>
-              </div>
-            </div><!-- End .feature-item -->
-
-            <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
-              <div class="d-flex align-items-center justify-content-end gap-4">
-                <div class="feature-content">
-                  <h3>Feather Icons</h3>
-                  <p>Phasellus ullamcorper ipsum rutrum nunc nunc nonummy metus vestibulum volutpat sapien arcu sed augue aliquam erat volutpat.</p>
-                </div>
-                <div class="feature-icon flex-shrink-0">
-                  <i class="bi bi-feather"></i>
-                </div>
-              </div>
-            </div><!-- End .feature-item -->
-
-            <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
-              <div class="d-flex align-items-center justify-content-end gap-4">
-                <div class="feature-content">
-                  <h3>Retina Ready</h3>
-                  <p>Aenean tellus metus bibendum sed posuere ac mattis non nunc vestibulum fringilla purus sit amet fermentum aenean commodo.</p>
-                </div>
-                <div class="feature-icon flex-shrink-0">
-                  <i class="bi bi-eye"></i>
-                </div>
-              </div>
-            </div><!-- End .feature-item -->
-
-          </div>
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="phone-mockup text-center">
-              <img src="assets/img/phone-app-screen.webp" alt="Phone Mockup" class="img-fluid">
-            </div>
-          </div><!-- End Phone Mockup -->
-
-          <div class="col-lg-4">
-
-            <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
-              <div class="d-flex align-items-center gap-4">
-                <div class="feature-icon flex-shrink-0">
-                  <i class="bi bi-code-square"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>W3c Valid Code</h3>
-                  <p>Donec vitae sapien ut libero venenatis faucibus nullam quis ante etiam sit amet orci eget eros faucibus tincidunt.</p>
-                </div>
-              </div>
-            </div><!-- End .feature-item -->
-
-            <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
-              <div class="d-flex align-items-center gap-4">
-                <div class="feature-icon flex-shrink-0">
-                  <i class="bi bi-phone"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Fully Responsive</h3>
-                  <p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum.</p>
-                </div>
-              </div>
-            </div><!-- End .feature-item -->
-
-            <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
-              <div class="d-flex align-items-center gap-4">
-                <div class="feature-icon flex-shrink-0">
-                  <i class="bi bi-browser-chrome"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Browser Compatibility</h3>
-                  <p>Nullam dictum felis eu pede mollis pretium integer tincidunt cras dapibus vivamus elementum semper nisi aenean vulputate.</p>
-                </div>
-              </div>
-            </div><!-- End .feature-item -->
-
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Features 2 Section -->
 
     <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row content justify-content-center align-items-center position-relative">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="display-4 mb-4">Maecenas tempus tellus eget condimentum</h2>
-            <p class="mb-4">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel</p>
-            <a href="#" class="btn btn-cta">Call To Action</a>
-          </div>
-
-          <!-- Abstract Background Elements -->
-          <div class="shape shape-1">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path d="M47.1,-57.1C59.9,-45.6,68.5,-28.9,71.4,-10.9C74.2,7.1,71.3,26.3,61.5,41.1C51.7,55.9,35,66.2,16.9,69.2C-1.3,72.2,-21,67.8,-36.9,57.9C-52.8,48,-64.9,32.6,-69.1,15.1C-73.3,-2.4,-69.5,-22,-59.4,-37.1C-49.3,-52.2,-32.8,-62.9,-15.7,-64.9C1.5,-67,34.3,-68.5,47.1,-57.1Z" transform="translate(100 100)"></path>
-            </svg>
-          </div>
-
-          <div class="shape shape-2">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path d="M41.3,-49.1C54.4,-39.3,66.6,-27.2,71.1,-12.1C75.6,3,72.4,20.9,63.3,34.4C54.2,47.9,39.2,56.9,23.2,62.3C7.1,67.7,-10,69.4,-24.8,64.1C-39.7,58.8,-52.3,46.5,-60.1,31.5C-67.9,16.4,-70.9,-1.4,-66.3,-16.6C-61.8,-31.8,-49.7,-44.3,-36.3,-54C-22.9,-63.7,-8.2,-70.6,3.6,-75.1C15.4,-79.6,28.2,-58.9,41.3,-49.1Z" transform="translate(100 100)"></path>
-            </svg>
-          </div>
-
-          <!-- Dot Pattern Groups -->
-          <div class="dots dots-1">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
-              </pattern>
-              <rect width="100" height="100" fill="url(#dot-pattern)"></rect>
-            </svg>
-          </div>
-
-          <div class="dots dots-2">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <pattern id="dot-pattern-2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
-              </pattern>
-              <rect width="100" height="100" fill="url(#dot-pattern-2)"></rect>
-            </svg>
-          </div>
-
-          <div class="shape shape-3">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path d="M43.3,-57.1C57.4,-46.5,71.1,-32.6,75.3,-16.2C79.5,0.2,74.2,19.1,65.1,35.3C56,51.5,43.1,65,27.4,71.7C11.7,78.4,-6.8,78.3,-23.9,72.4C-41,66.5,-56.7,54.8,-65.4,39.2C-74.1,23.6,-75.8,4,-71.7,-13.2C-67.6,-30.4,-57.7,-45.2,-44.3,-56.1C-30.9,-67,-15.5,-74,0.7,-74.9C16.8,-75.8,33.7,-70.7,43.3,-57.1Z" transform="translate(100 100)"></path>
-            </svg>
-          </div>
-        </div>
-
-      </div>
-
+    <section id="call-to-action" class="call-to-action section block_all_h hidden_all_h">
+    <div class="uiblock-container">
+      <h2 class="uiblock-title">Try the app</h2>
+      <button class="uiblock-btn" onclick="downloadFile()">Download</button>
+    </div>
     </section><!-- /Call To Action Section -->
 
-    <!-- Clients Section -->
-    <section id="clients" class="clients section">
+    <script>
+        function downloadFile() {
+             const link = document.createElement('a');
+             link.href = '/files/app.apk';
+             link.download = 'app.apk';
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+         }
+    </script>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "480": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 60
-                },
-                "640": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 80
-                },
-                "992": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 120
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
+    <section class="plans-section block_all_h hidden_all_h" id="plans-section">
+      <div class="plans-center-text plans-margin-bottom-big" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="plans-heading-secondary">
+          Hosting Plans
+        </h2>
       </div>
 
-    </section><!-- /Clients Section -->
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row g-5">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+      <div class="plans-row" data-aos="fade-up" data-aos-delay="100">
+        <div class="plans-col-1-of-3">
+          <div class="plans-card">
+            <div class="plans-card__side plans-card__side--front-1">
+              <div class="plans-card__title plans-card__title--1">
+                <i class="fas fa-paper-plane"></i>
+                <h4 class="plans-card__heading">Basic</h4>
               </div>
-              <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
-              <h4>Designer</h4>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-              <h3>Jena Karlis</h3>
-              <h4>Store Owner</h4>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-              <h3>Matt Brandon</h3>
-              <h4>Freelancer</h4>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
-
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-card d-flex">
-              <div class="icon flex-shrink-0">
-                <i class="bi bi-activity"></i>
-              </div>
-              <div>
-                <h3>Nesciunt Mete</h3>
-                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-                <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+              <div class="plans-card__details">
+                <ul>
+                  <li>1 Website</li>
+                  <li>50 GB SSD Storage</li>
+                  <li>Unmetered Bandwidth</li>
+                  <li>Free SSL Certificate</li>
+                  <li>1 Included Domain</li>
+                  <li>1 Included Domain</li>
+                </ul>
               </div>
             </div>
-          </div><!-- End Service Card -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card d-flex">
-              <div class="icon flex-shrink-0">
-                <i class="bi bi-diagram-3"></i>
+            <div class="plans-card__side plans-card__side--back plans-card__side--back-1">
+              <div class="plans-card__cta">
+                <div class="plans-card__price-box">
+                  <p class="plans-card__price-only">Only</p>
+                  <p class="plans-card__price-value">$2.95/mo*</p>
+                </div>
+                <a href="#popup" class="plans-btn plans-btn--white">Select</a>
               </div>
-              <div>
-                <h3>Eosle Commodi</h3>
-                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div><!-- End Service Card -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card d-flex">
-              <div class="icon flex-shrink-0">
-                <i class="bi bi-easel"></i>
-              </div>
-              <div>
-                <h3>Ledo Markt</h3>
-                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-                <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div><!-- End Service Card -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-card d-flex">
-              <div class="icon flex-shrink-0">
-                <i class="bi bi-clipboard-data"></i>
-              </div>
-              <div>
-                <h3>Asperiores Commodit</h3>
-                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-                <a href="service-details.html" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div><!-- End Service Card -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Pricing</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4 justify-content-center">
-
-          <!-- Basic Plan -->
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="pricing-card">
-              <h3>Basic Plan</h3>
-              <div class="price">
-                <span class="currency">$</span>
-                <span class="amount">9.9</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
-
-              <h4>Featured Included:</h4>
-              <ul class="features-list">
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Duis aute irure dolor
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Excepteur sint occaecat
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Nemo enim ipsam voluptatem
-                </li>
-              </ul>
-
-              <a href="#" class="btn btn-primary">
-                Buy Now
-                <i class="bi bi-arrow-right"></i>
-              </a>
             </div>
           </div>
-
-          <!-- Standard Plan -->
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="pricing-card popular">
-              <div class="popular-badge">Most Popular</div>
-              <h3>Standard Plan</h3>
-              <div class="price">
-                <span class="currency">$</span>
-                <span class="amount">19.9</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-
-              <h4>Featured Included:</h4>
-              <ul class="features-list">
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Lorem ipsum dolor sit amet
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Consectetur adipiscing elit
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Sed do eiusmod tempor
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Ut labore et dolore magna
-                </li>
-              </ul>
-
-              <a href="#" class="btn btn-light">
-                Buy Now
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Premium Plan -->
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="pricing-card">
-              <h3>Premium Plan</h3>
-              <div class="price">
-                <span class="currency">$</span>
-                <span class="amount">39.9</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="description">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.</p>
-
-              <h4>Featured Included:</h4>
-              <ul class="features-list">
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Temporibus autem quibusdam
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Saepe eveniet ut et voluptates
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Nam libero tempore soluta
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Cumque nihil impedit quo
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  Maxime placeat facere possimus
-                </li>
-              </ul>
-
-              <a href="#" class="btn btn-primary">
-                Buy Now
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
         </div>
 
-      </div>
+        <div class="plans-col-1-of-3">
+          <div class="plans-card">
+            <div class="plans-card__side plans-card__side--front-2">
+              <div class="plans-card__title plans-card__title--2">
+                <i class="fas fa-plane"></i>
+                <h4 class="plans-card__heading">Plus</h4>
+              </div>
 
-    </section><!-- /Pricing Section -->
-
-    <!-- Faq Section -->
-    <section class="faq-9 faq section light-background" id="faq">
-
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-5" data-aos="fade-up">
-            <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-            <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum.</p>
-            <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
-              <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z" fill="currentColor"></path>
-              </svg>
+              <div class="plans-card__details">
+                <ul>
+                  <li>Includes Basic Package Features</li>
+                  <li>Unlimited Websites</li>
+                  <li>Unlimited SSD Storage</li>
+                  <li>Unlimited Domains</li>
+                  <li>Unlimited Parked Domains</li>
+                  <li>Unlimited Sub Domains</li>
+                </ul>
+              </div>
+            </div>
+            <div class="plans-card__side plans-card__side--back plans-card__side--back-2">
+              <div class="plans-card__cta">
+                <div class="plans-card__price-box">
+                  <p class="plans-card__price-only">Only</p>
+                  <p class="plans-card__price-value">$5.45/mo*</p>
+                </div>
+                <a href="#popup" class="plans-btn plans-btn--white">Select</a>
+              </div>
             </div>
           </div>
-
-          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
-            <div class="faq-container">
-
-              <div class="faq-item faq-active">
-                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
-                <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
-                <div class="faq-content">
-                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                <div class="faq-content">
-                  <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section><!-- /Faq Section -->
 
-    <!-- Call To Action 2 Section -->
-    <section id="call-to-action-2" class="call-to-action-2 section dark-background">
+        <div class="plans-col-1-of-3">
+          <div class="plans-card">
+            <div class="plans-card__side plans-card__side--front-3">
+              <div class="plans-card__title plans-card__title--3">
+                <i class="fas fa-rocket"></i>
+                <h4 class="plans-card__heading">Pro</h4>
+              </div>
 
-      <div class="container">
-        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-10">
-            <div class="text-center">
-              <h3>Call To Action</h3>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a class="cta-btn" href="#">Call To Action</a>
+              <div class="plans-card__details">
+                <ul>
+                  <li>Includes Plus Plan Features</li>
+                  <li>High Performance</li>
+                  <li>2 Spam Experts</li>
+                  <li>Free SSL Certificate</li>
+                  <li>Domain Privacy</li>
+                  <li>Site Backup - CodeGuard Basic</li>
+                </ul>
+              </div>
+            </div>
+            <div class="plans-card__side plans-card__side--back plans-card__side--back-3">
+              <div class="plans-card__cta">
+                <div class="plans-card__price-box">
+                  <p class="plans-card__price-only">Only</p>
+                  <p class="plans-card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="plans-btn plans-btn--white">Select</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-    </section><!-- /Call To Action 2 Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4 g-lg-5">
-          <div class="col-lg-5">
-            <div class="info-box" data-aos="fade-up" data-aos-delay="200">
-              <h3>Contact Info</h3>
-              <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.</p>
-
-              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box">
-                  <i class="bi bi-geo-alt"></i>
-                </div>
-                <div class="content">
-                  <h4>Our Location</h4>
-                  <p>A108 Adam Street</p>
-                  <p>New York, NY 535022</p>
-                </div>
-              </div>
-
-              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box">
-                  <i class="bi bi-telephone"></i>
-                </div>
-                <div class="content">
-                  <h4>Phone Number</h4>
-                  <p>+1 5589 55488 55</p>
-                  <p>+1 6678 254445 41</p>
-                </div>
-              </div>
-
-              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
-                <div class="icon-box">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <div class="content">
-                  <h4>Email Address</h4>
-                  <p>info@example.com</p>
-                  <p>contact@example.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
-              <h3>Get In Touch</h3>
-              <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.</p>
-
-              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                <div class="row gy-4">
-
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                  </div>
-
-                  <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                  </div>
-
-                  <div class="col-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                  </div>
-
-                  <div class="col-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                  </div>
-
-                  <div class="col-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                    <button type="submit" class="btn">Send Message</button>
-                  </div>
-
-                </div>
-              </form>
-
-            </div>
-          </div>
-
-        </div>
-
+      <div class="plans-center-text plans-margin-top-huge" data-aos="fade-up" data-aos-delay="100">
+        <a href="#" class="plans-btn plans-btn--green">Get Started</a>
       </div>
+    </section>
 
-    </section><!-- /Contact Section -->
+
+<!-- Only the modified sections are shown; other parts remain unchanged -->
+<section id="topics-container" class="topics-container section block_all_h hidden_all_h">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="topics-content">
+          <div class="topics-header">
+            <h2>Chat</h2>
+          </div>
+          <div class="action-container">
+            <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Пошук за назвою теми..." oninput="filterTopics()">
+            </div>
+            <div id="createTopicSection" class="hidden">
+              <button class="btn btn-primary create-topic-btn block_up_little_lit" onclick="showCreateTopicForm()">
+                <i class="bi bi-plus-lg"></i> Створити нову тему
+              </button>
+            </div>
+          </div>
+          <div id="topicForm" class="hidden">
+            <div class="form-group">
+              <input type="text" id="topicTitle" class="form-control" placeholder="Назва теми">
+            </div>
+            <button onclick="createTopic()" class="btn btn-primary block_up_little_lit">Створити</button>
+          </div>
+          <div id="authMessage" class="auth-message">
+            Будь ласка, <a href="#" onclick="toggleProfile()">увійдіть</a> щоб створити тему
+          </div>
+          <div id="topicList" class="topic-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal for delete confirmation -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Підтвердження видалення</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Ви впевнені, що хочете видалити цю тему? Це також видалить всі повідомлення в ній.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Видалити</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="forum-container" class="forum-container block_all_h hidden_all_h">
+  <div class="container">
+    <h2 id="topicTitle" class="mb-4">Тема форуму</h2>
+    <button class="btn btn-secondary mb-3 block_up_little_lit" onclick="toggleForumBlocks('topics-container')">
+      <i class="bi bi-arrow-left"></i> Повернутися до тем
+    </button>
+    <div id="forumAuthMessage" class="alert alert-info d-none">
+      Будь ласка, увійдіть, щоб додати повідомлення
+    </div>
+    <div id="messageInput" class="d-none">
+      <textarea id="messageText" class="form-control mb-2" rows="3" placeholder="Напишіть ваше повідомлення..."></textarea>
+      <button class="btn btn-primary block_up_little_lit" onclick="addMessage()">Відправити</button>
+    </div>
+    <div id="messageList" class="message-list mt-4"></div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteMessageModal" tabindex="-1" aria-labelledby="deleteMessageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteMessageModalLabel">Підтвердження видалення</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Ви впевнені, що хочете видалити це повідомлення? Це також видалить всі відповіді на нього.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteMessageBtn">Видалити</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section class="hidden_all_h">
+<section id="features-cards" class=""></section>
+<section id="services" class=""></section>
+<section id="clients" class=""></section>
+<section id="faq" class=""></section>
+<section id="stats" class=""></section>
+<section id="features_one" class=""></section>
+<section id="features_cards_two" class=""></section>
+<section id="forum-container" class=""></section>
+<section id="news" class=""></section>
+<section>
+
+<section id="top-messages-container" class="top-messages-container section block_all_h hidden_all_h">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="forum-content">
+          <div class="forum-header">
+            <h2 class="topic-title">Популярні теми</h2>
+          </div>
+          <div class="message-list" id="messageList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<button class="chat-button" onclick="toggleChat()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+    </button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>Chat</span>
+            <button class="close-button" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Здесь будут сообщения -->
+        </div>
+        <div class="chat-input">
+            <div class="chat-input-container">
+                <input type="text" id="messageInputUN" placeholder="Enter a message...">
+                <button class="test_rotate" onclick="sendMessage_nopobleminfuture()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
 
   </main>
+    <!-- Modals for Partners for Change -->
+  <div id="joinProjectModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="joinProjectTitle" class="modal-title"></h5>
+          <button type="button" class="btn-close" id="closeJoinModal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="joinProjectContent"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="closeJoinModalFooter">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div id="deleteProjectModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="btn-close" id="cancelDeleteProject" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="deleteProjectMessage"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="confirmDeleteProject">Confirm</button>
+          <button type="button" class="btn btn-secondary" id="cancelDeleteProjectFooter">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contactModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Project Creator</h5>
+          <button type="button" class="btn-close" id="closeContactModal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe id="contactIframe" src="" class="w-100" style="height: 400px;"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="closeContactModalFooter">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!--
   <footer id="footer" class="footer">
 
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">iLanding</span>
+            <span class="sitename">NeuroFlow</span>
           </a>
           <div class="footer-contact pt-3">
             <p>A108 Adam Street</p>
@@ -1206,32 +1524,43 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">iLanding</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">NeuroFlow</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 
-  </footer>
-
+  </footer> -->
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
+  <!--<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+<script src="assets/folder_js_css/js/partners-for-change.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="https://kit.fontawesome.com/bdd89edb33.js"></script>
+  <!-- Локальні JS файли -->
+  <script src="test/test.js?ts=<%= Date.now() %>"></script>
+  <script src="assets/js/main.js?ts=<%= Date.now() %>"></script>
+  <script src="assets/folder_js_css/js/my.js?ts=asdefg"></script>
+  <script src="assets/folder_js_css/js/test.js?ts=<%= Date.now() %>"></script>
+  <script src="assets/folder_js_css/js/topics.js?ts=<%= Date.now() %>"></script>
+  <script src="assets/folder_js_css/js/news.js"></script>
+  <script src="assets/folder_js_css/js/topp_topics.js?ts=<%= Date.now() %>"></script>
+  <script src="assets/folder_js_css/js/script_manager_chat.js?ts=abcde"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
