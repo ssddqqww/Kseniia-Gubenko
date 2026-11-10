@@ -5265,12 +5265,12 @@ h4 {
   -webkit-backdrop-filter: blur(16px);
   cursor: pointer;
   user-select: none;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
 }
 
 .music-player-pill:hover {
-  transform: translateY(-2px);
+  transform: none;
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
 }
@@ -5327,7 +5327,7 @@ h4 {
 }
 
 .music-toggle-btn:hover {
-  transform: scale(1.08);
+  transform: none;
   background: #f4f4f5;
 }
 
