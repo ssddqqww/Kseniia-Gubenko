@@ -2041,7 +2041,6 @@ img { display: block; max-width: 100%; }
   display: grid;
   place-items: center;
   position: relative;
-  transition: transform 200ms ease, border-color 200ms ease;
 }
 
 .tech-icons span:first-child {
@@ -2049,8 +2048,6 @@ img { display: block; max-width: 100%; }
 }
 
 .tech-icons span:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 92, 151, 0.55);
   z-index: 3;
 }
 
